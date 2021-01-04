@@ -1,0 +1,43 @@
+.cancha-card {
+  width: 250px;
+  height: 280px;
+  margin: 15px;
+}
+
+mat-card::ng-deep.mat-card-header-text {
+  width: 100%;
+  text-align: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+div {
+  flex: 50%;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.dia {
+  background: lightblue;
+  color: black;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.noche {
+  background: rgba(0,0,0,0.1);
+  color: black;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+

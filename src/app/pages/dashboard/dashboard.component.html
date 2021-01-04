@@ -1,0 +1,22 @@
+<carousel  [images]="images" cellsToShow="1" autoplay="true"
+ loop="true" dots="ture" [arrows]=false [arrowsOutside]=false>
+</carousel>
+
+<div style="display: flex; flex-direction: row; align-content: center;">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-icon mat-card-avatar>check</mat-icon>
+            <mat-card-title>Confirmación</mat-card-title>
+            <mat-card-subtitle>Confirmá el préstamo</mat-card-subtitle>
+        </mat-card-header>
+        <br />
+        <mat-card-content>
+            <!-- {{prestamo.fechaPrestamo | date:'dd-MM-yyyy'}} -->
+            <h3 class="mat-h3">Fecha de préstamo: </h3>
+            <br />
+        </mat-card-content>
+        <mat-card-actions align="center">
+            <button mat-button color="primary" >Canchas</button>
+       </mat-card-actions>
+    </mat-card>
+</div>

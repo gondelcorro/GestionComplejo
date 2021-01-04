@@ -1,0 +1,18 @@
+.avatar{
+    display:flex; 
+    flex-direction: row;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.mat-toolbar {
+    /*background-color: #263238;*/
+    /*background-color: #AB2A3E;*/
+    /*background-color: #f5f5f5*/
+    background-color: #212121
+}
+
+.container{
+    padding: 20px;
+}

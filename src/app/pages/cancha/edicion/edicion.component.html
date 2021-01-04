@@ -1,0 +1,28 @@
+<div class="example-container">
+    <h1>Formulario de canchas</h1>
+    <mat-divider></mat-divider>
+    <br/>
+    <mat-form-field>
+      <input matInput placeholder="Número" [(ngModel)]="cancha.numero">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Tipo</mat-label>
+        <mat-select  required [(ngModel)]="cancha.tipo">
+            <mat-option *ngFor="let can of tipoCanchaOpc" [value]="can">
+                {{can}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Precio día" [(ngModel)]="cancha.precioDia">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Precio noche" [(ngModel)]="cancha.precioNoche">
+    </mat-form-field>
+    <br/>
+  </div>
+  <div align="right">
+    <button mat-raised-button color="primary" (click)="operar()">Aceptar</button>
+    &nbsp;
+    <button mat-raised-button color="basic" (click)="cancelar()">Cancelar</button>
+  </div>
