@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   images = [
-    { path: 'assets/images/carousel/estadio1.jpg' },
-    { path: 'assets/images/carousel/estadio2.jpg' }
+    { path: 'assets/images/carousel/autogestion.jpg' },
+    { path: 'assets/images/carousel/automoviles.jpg' },
+    { path: 'assets/images/carousel/bicicleta.jpg' }
   ]
 
   constructor() { }

@@ -19,6 +19,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [],
@@ -42,7 +44,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatStepperModule,
     MatAutocompleteModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
     //AGREGAR EL EXPORTS TB PARA LOS COMP DE ANG MAT SI O SI
     //NO OLVIDAR REGISTRAR ESTE MODULO EN EL APPMODULE
@@ -65,7 +69,9 @@ import {MatMenuModule} from '@angular/material/menu';
       MatStepperModule,
       MatAutocompleteModule,
       MatCardModule,
-      MatMenuModule
+      MatMenuModule,
+      MatDatepickerModule,
+      MatNativeDateModule
     ],
 })
 export class MaterialModule { }

@@ -1,1 +1,56 @@
-<p>reserva works!</p>
+<mat-horizontal-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup" state="cancha">
+        <!-- <form [formGroup]="firstFormGroup"> -->
+            <ng-template matStepLabel>Seleccioná la cancha</ng-template>
+            <ng-template matStepperIcon="cancha">
+                <mat-icon>face</mat-icon>
+            </ng-template>
+            <mat-form-field style="margin-left:20px; width:250px;">
+                <mat-label>Cancha</mat-label>
+                <mat-select [(ngModel)]="selectedCancha">
+                    <mat-option *ngFor="let cancha of canchas" [value]="cancha">
+                      {{"Nro. " + cancha.numero + " - " + "Tipo " + cancha.tipo}}
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+            <div>
+                <button *ngIf="selectedCancha!=undefined" mat-button matStepperNext>Siguiente</button>
+            </div>
+    <!--     </form> -->
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" state="fecha">
+        <!-- <form [formGroup]="secondFormGroup"> -->
+            <ng-template matStepLabel>Fecha y hora</ng-template>
+            <ng-template matStepperIcon="fecha">
+                <mat-icon>library_books</mat-icon>
+            </ng-template>
+            <mat-form-field style="margin-left:20px; width:250px;">
+                <mat-label>Fecha</mat-label>
+                <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" [(ngModel)]="selectedFecha" disabled >
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker disabled="false"></mat-datepicker>
+               <!--  <input matInput placeholder="Ingrese un código" [formControl]="formCtrlFecha" required> -->
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Voler</button>
+                <button *ngIf="selectedFecha!=undefined" mat-button matStepperNext>Siguiente</button>
+               <!--  <button mat-button matStepperNext  (click)="solicitudConfirmacion()">Siguiente</button> -->
+            </div>
+        <!-- </form> -->
+    </mat-step>
+    <mat-step state="listo">
+        <ng-template matStepLabel>Confirmación</ng-template>
+        <ng-template matStepperIcon="listo">
+            <mat-icon>check</mat-icon>
+        </ng-template>
+        <p>Sólo falta que confirmes la reserva!</p>
+        <p *ngIf="selectedCancha!=undefined" >{{selectedCancha.numero}}</p>
+        <p *ngIf="selectedFecha!=undefined">{{selectedFecha | date:'dd-MM-yyyy'}}</p>
+        <div>
+            <button mat-button color="primary" (click)="stepper.reset()">Nueva reserva</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>
+
+<br/>
+<app-scheduler></app-scheduler>
