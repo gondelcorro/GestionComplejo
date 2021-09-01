@@ -1,4 +1,29 @@
 .example-card {
-    max-width: 300px;
-    margin: 40px;
+  width: 300px;
+  max-width: 300px;
+  margin: 40px;
+  background-color: #81d4fa;
+}
+
+.example-card1 {
+  width: 300px;
+  max-width: 300px;
+  margin: 40px;
+  background-color: #ffe082;
+}
+
+.example-card2 {
+  width: 300px;
+  max-width: 300px;
+  margin: 40px;
+  background-color: #80cbc4;
+}
+
+.title-card{
+  color: white;
+}
+
+.content-card{
+  text-align: center !important;
+  font-size: 80px;
 }

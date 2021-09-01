@@ -1,8 +1,13 @@
-import { ComplejoSharedService } from './../../service/complejo-shared.service';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CanchaService } from 'src/app/service/cancha.service';
-import { Cancha } from 'src/app/model/cancha';
+import {ComplejoSharedService} from './../../service/complejo-shared.service';
+import {Component, OnInit} from '@angular/core';
+import {CanchaService} from 'src/app/service/cancha.service';
+import {Cancha} from 'src/app/model/cancha';
+import {ReservaService} from '../../service/reserva.service';
+import {Complejo} from '../../model/complejo';
+import {Reserva} from '../../model/reserva';
+import {DatePipe} from '@angular/common';
+import {environment} from '../../../environments/environment';
+import {ComplejoService} from '../../service/complejo.service';
 
 @Component({
   selector: 'app-reserva',
@@ -11,36 +16,43 @@ import { Cancha } from 'src/app/model/cancha';
 })
 export class ReservaComponent implements OnInit {
 
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  formCtrlCancha = new FormControl();
-  formCtrlFecha = new FormControl();
   public canchas: Cancha[];
+  public complejo: Complejo;
   public selectedCancha: Cancha;
-  public selectedFecha: Date;
-  public minDate: Date;
-  public maxDate: Date;
+  public selectedFecha: Date = new Date();
+  public reservas: Reserva[];
 
-  constructor(private _formBuilder: FormBuilder, private canchaService: CanchaService, private complejoSharedService: ComplejoSharedService) {
-    this.minDate = new Date(); //Fecha actual
-    this.maxDate = new Date();
-    this.maxDate.setDate(this.maxDate.getDate() + 7);
-   }
+  constructor(private canchaService: CanchaService, private complejoSharedService: ComplejoSharedService,
+              private reservaService: ReservaService, private datePipe: DatePipe, private complejoService: ComplejoService) {
+
+  }
 
   ngOnInit(): void {
-    this.listarCanchas();
-    this.firstFormGroup = this._formBuilder.group({
-      formCtrlCancha: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      formCtrlFecha: ['', Validators.required]
+    console.log(this.reservas);
+    this.complejoService.obtenerComplejo(sessionStorage.getItem(environment.user)).subscribe(complejo => {
+      this.complejo = complejo;
+      this.complejoSharedService.setComplejo(this.complejo);
+      this.listarCanchas();
     });
   }
 
   listarCanchas() {
-    let idComplejo = this.complejoSharedService.getComplejo().idComplejo;
-    this.canchaService.listarPorComplejo(idComplejo).subscribe(data => {
+    this.canchaService.listarPorComplejoYHabilitada(this.complejo.idComplejo).subscribe(data => {
       this.canchas = data;
+    });
+  }
+
+  public cargarReservas() {
+    const fechaIniFormateada = this.datePipe.transform(this.selectedFecha, 'dd-MM-yyyy');
+    let fechaFin = new Date();
+    fechaFin.setDate(fechaFin.getDate()+6);
+    const fechaFinFormateada = this.datePipe.transform(fechaFin, 'dd-MM-yyyy');
+    console.log(fechaFinFormateada);
+    this.reservaService.verDisponibilidadxSemana(this.complejo.idComplejo, this.selectedCancha.idCancha, fechaIniFormateada,
+      fechaFinFormateada).subscribe(reservas => {
+      this.reservas = reservas;
+      this.reservaService.reservasCambio.next(reservas);
+      console.log(reservas);
     });
   }
 

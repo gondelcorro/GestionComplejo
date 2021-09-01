@@ -1,18 +1,27 @@
-.avatar{
-    display:flex; 
-    flex-direction: row;
-    position: absolute;
-    top: 15px;
-    right: 15px;
+.avatar {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
 
 .mat-toolbar {
-    /*background-color: #263238;*/
-    /*background-color: #AB2A3E;*/
-    /*background-color: #f5f5f5*/
-    background-color: #212121
+  /*background-color: #263238;*/
+/*  background-color: #AB2A3E;*/
+  /*background-color: #f5f5f5*/
+  background-color: #1F1B20;
 }
 
-.container{
-    padding: 20px;
+.logo {
+  margin: auto;
+  top: 10px;
+  height: 50px;
+  width: 150px;
+}
+
+.container {
+  height: 100%;
+  min-height: 90vh;
+  padding: 20px;
 }

@@ -1,22 +1,62 @@
 <carousel  [images]="images" cellsToShow=1 [autoplay]="true"   [overflowCellsLimit]="0"
  [loop]="true" [dots]="true" [arrows]="false" [arrowsOutside]="false">
 </carousel>
-
+<br>
 <div style="display: flex; flex-direction: row; align-content: center;">
     <mat-card class="example-card">
         <mat-card-header>
-            <mat-icon mat-card-avatar>check</mat-icon>
-            <mat-card-title>Confirmación</mat-card-title>
-            <mat-card-subtitle>Confirmá el préstamo</mat-card-subtitle>
+            <mat-icon mat-card-avatar>today</mat-icon>
+            <mat-card-title>Reservas confirmadas</mat-card-title>
+            <mat-card-subtitle>para el día de hoy</mat-card-subtitle>
         </mat-card-header>
-        <br />
+        <br/><br><br>
         <mat-card-content>
-            <!-- {{prestamo.fechaPrestamo | date:'dd-MM-yyyy'}} -->
-            <h3 class="mat-h3">Fecha de préstamo: </h3>
-            <br />
+            <p class="content-card">#{{cantReservasConf}}</p>
+            <br/>
         </mat-card-content>
-        <mat-card-actions align="center">
-            <button mat-button color="primary" >Canchas</button>
-       </mat-card-actions>
+<!--        <mat-card-actions align="end">
+            <button mat-button color="basic" class="title-card">
+              Ver detalle
+              <mat-icon>arrow_forward</mat-icon>
+            </button>
+       </mat-card-actions>-->
     </mat-card>
+
+  <mat-card class="example-card1">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>event_available</mat-icon>
+      <mat-card-title>Reservas finalizadas</mat-card-title>
+      <mat-card-subtitle>para el día de hoy</mat-card-subtitle>
+    </mat-card-header>
+    <br/><br><br>
+    <mat-card-content>
+      <p class="content-card">#{{cantReservasFin}}</p>
+      <br/><br>
+    </mat-card-content>
+<!--    <mat-card-actions align="end">
+      <button mat-button color="basic" class="title-card">
+        Ver detalle
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </mat-card-actions>-->
+  </mat-card>
+
+  <mat-card class="example-card2">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>event_busy</mat-icon>
+      <mat-card-title>Reservas anuladas</mat-card-title>
+      <mat-card-subtitle>para el día de hoy</mat-card-subtitle>
+    </mat-card-header>
+    <br/><br><br>
+    <mat-card-content>
+      <p class="content-card">#{{cantReservasAnu}}</p>
+      <br/><br>
+    </mat-card-content>
+<!--    <mat-card-actions align="end">
+      <button mat-button color="basic" class="title-card">
+        Ver detalle
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </mat-card-actions>-->
+  </mat-card>
 </div>

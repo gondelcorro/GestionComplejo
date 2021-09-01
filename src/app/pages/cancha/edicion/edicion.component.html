@@ -3,7 +3,7 @@
     <mat-divider></mat-divider>
     <br/>
     <mat-form-field>
-      <input matInput placeholder="Número" [(ngModel)]="cancha.numero">
+      <input matInput type="number" [min]="1" placeholder="Número" [(ngModel)]="cancha.numero">
     </mat-form-field>
     <mat-form-field>
         <mat-label>Tipo</mat-label>
@@ -14,15 +14,18 @@
         </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Precio día" [(ngModel)]="cancha.precioDia">
+      <input matInput type="number" placeholder="Precio día" [(ngModel)]="cancha.precioDia">
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Precio noche" [(ngModel)]="cancha.precioNoche">
+      <input matInput type="number" placeholder="Precio noche" [(ngModel)]="cancha.precioNoche">
     </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Estado" readonly [(ngModel)]="textEstadoCancha">
+  </mat-form-field>
     <br/>
   </div>
   <div align="right">
-    <button mat-raised-button color="primary" (click)="operar()">Aceptar</button>
-    &nbsp;
     <button mat-raised-button color="basic" (click)="cancelar()">Cancelar</button>
+    &nbsp;
+    <button mat-raised-button color="primary" (click)="operar()">Aceptar</button>
   </div>

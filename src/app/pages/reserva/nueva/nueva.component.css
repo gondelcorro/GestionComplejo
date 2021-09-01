@@ -1,0 +1,17 @@
+.jugador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}

@@ -1,0 +1,57 @@
+<h2 style="font-size: 24px">Cambio de contraseña</h2>
+<mat-divider></mat-divider>
+<br><br>
+<div>
+  <form #cambioClaveForm="ngForm" [formGroup]="formGorup">
+    <div fxFlex fxLayout="column">
+      <mat-form-field class="w-100">
+        <input matInput type="password" placeholder="Contraseña actual" formControlName="claveActual" required>
+        <mat-hint>
+          Ingrese su contraseña actual.
+        </mat-hint>
+        <mat-icon matSuffix>password</mat-icon>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <input matInput [type]="hidePass ? 'password' : 'text'" placeholder="Nueva contraseña"
+               formControlName="clave" required>
+        <mat-hint *ngIf="formGorup.controls['clave'].errors?.required ||
+                            formGorup.controls['clave'].errors?.pattern">
+          La contraseña debe contener letras, números y longitud mínima de 10 caracteres.
+        </mat-hint>
+        <mat-hint *ngIf="!(formGorup.controls['clave'].errors?.required ||
+                            formGorup.controls['clave'].errors?.pattern)" style="color: #1F8A4D;">
+          La contraseña es válida.
+        </mat-hint>
+        <button mat-icon-button matSuffix (click)="hidePass = !hidePass"
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
+          <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="w-100">
+        <input matInput [type]="hidePassConfirm ? 'password' : 'text'"
+               placeholder="Confirmar contraseña" formControlName="confirmaClave" required>
+        <mat-hint *ngIf="formGorup.controls['confirmaClave'].errors?.required">
+          Ingrese nuevamente su contraseña.
+        </mat-hint>
+        <mat-hint *ngIf="formGorup.controls['confirmaClave'].errors?.coinciden == null"
+                  style="color: #1F8A4D;">
+          Las claves coinciden.
+        </mat-hint>
+        <mat-hint *ngIf="formGorup.controls['confirmaClave'].errors?.coinciden ==false &&
+                        !formGorup.controls['confirmaClave'].errors?.required" style="color: red;">
+          Las contraseñas no coinciden.
+        </mat-hint>
+        <button mat-icon-button matSuffix (click)="hidePassConfirm = !hidePassConfirm"
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassConfirm">
+          <mat-icon>{{hidePassConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button color="primary" [disabled]="!formGorup.valid" (click)="cambiarClave()">
+        Cambiar contraseña
+      </button>
+      <br>
+    </div>
+  </form>
+</div>

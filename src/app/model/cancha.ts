@@ -8,4 +8,5 @@ export class Cancha{
     tipo: TipoCancha;
     precioDia: number;
     precioNoche: number;
+    habilitada: boolean;
 }

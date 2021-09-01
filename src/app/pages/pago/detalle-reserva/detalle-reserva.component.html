@@ -1,0 +1,24 @@
+<div class="example-container">
+  <h1>Detalle de reserva</h1>
+  <mat-divider></mat-divider>
+  <br/>
+  <mat-form-field>
+    <input matInput placeholder="Jugador" [(ngModel)]="reserva.jugador.nomYApe" readonly>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Cancha" [(ngModel)]="reserva.cancha.numero" readonly>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Fecha" [(ngModel)]="reserva.fecha" readonly>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Hora inicio" [(ngModel)]="reserva.horaInicio" readonly>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Hora fin" [(ngModel)]="reserva.horaFin" readonly>
+  </mat-form-field>
+  <br/>
+</div>
+<div align="right">
+  <button mat-raised-button color="primary" mat-dialog-close>Cerrar</button>
+</div>

@@ -1,28 +1,68 @@
+<div class="container">
+  <div align="end" class="center">
+    <h2 style="margin: 0px">{{ viewDate | calendarSchedulerDate:(view + 'ViewTitle'):locale:weekStartsOn:excludeDays:viewDays:startsWithToday }}</h2>
+  </div>
+  <div align="end" class="right">
+    <button mwlCalendarPreviousView
+            [view]="view"
+            [(viewDate)]="viewDate"
+            [daysInWeek]="viewDays"
+            [excludeDays]="excludeDays"
+            [disabled]="prevBtnDisabled"
+            (viewDateChange)="dateOrViewChanged()">
+                            <span class="valign-center">
+                                <i title="Anterior"
+                                   class="material-icons md-18">keyboard_arrow_left</i>
+                            </span>
+    </button>
+    <button mwlCalendarToday
+            [(viewDate)]="viewDate"
+            (viewDateChange)="dateOrViewChanged()">
+                            <span class="valign-center">
+                                <i title="Hoy"
+                                   class="material-icons md-18">today</i>
+                            </span>
+    </button>
+    <button mwlCalendarNextView
+            [view]="view"
+            [(viewDate)]="viewDate"
+            [daysInWeek]="viewDays"
+            [excludeDays]="excludeDays"
+            [disabled]="nextBtnDisabled"
+            (viewDateChange)="dateOrViewChanged()">
+                            <span class="valign-center">
+                                <i title="Siguiente"
+                                   class="material-icons md-18">keyboard_arrow_right</i>
+                            </span>
+    </button>
+  </div>
+</div>
+
+
 <ng-container [ngSwitch]="view">
-    <calendar-scheduler-view *ngSwitchCase="'week'"
-    [viewDate]="viewDate"
-    [events]="events"
-    [locale]="locale"
-    [forceViewDays]="forceViewDays"
-    [weekStartsOn]="weekStartsOn"
-    [excludeDays]="excludeDays"
-    [startsWithToday]="startsWithToday"
-    [hourSegments]="hourSegments"
-    [dayStartHour]="dayStartHour"
-    [dayEndHour]="dayEndHour"
-    [dayModifier]="dayModifier"
-    [hourModifier]="hourModifier"
-    [segmentModifier]="segmentModifier"
-    [eventModifier]="eventModifier"
-    [showEventActions]="true"
-    [showSegmentHour]="true"
-    [zoomEventOnHover]="true"
-    (viewDaysChanged)="viewDaysChanged($event)"
-    (dayHeaderClicked)="dayHeaderClicked($event.day)"
-    (hourClicked)="hourClicked($event.hour)"
-    (segmentClicked)="segmentClicked('Clicked', $event.segment)"
-    (eventClicked)="eventClicked('Clicked', $event.event)"
-    (eventTimesChanged)="eventTimesChanged($event)"
-    [refresh]="refresh">
-    </calendar-scheduler-view>
+  <calendar-scheduler-view *ngSwitchCase="'week'"
+                           [viewDate]="viewDate"
+                           [events]="events"
+                           [locale]="locale"
+                           [forceViewDays]="forceViewDays"
+                           [weekStartsOn]="weekStartsOn"
+                           [excludeDays]="excludeDays"
+                           [startsWithToday]="startsWithToday"
+                           [hourSegments]="hourSegments"
+                           [dayStartHour]="dayStartHour"
+                           [dayEndHour]="dayEndHour"
+                           [dayModifier]="dayModifier"
+                           [hourModifier]="hourModifier"
+                           [segmentModifier]="segmentModifier"
+                           [showEventActions]="true"
+                           [showSegmentHour]="false"
+                           [zoomEventOnHover]="false"
+                           (viewDaysChanged)="viewDaysChanged($event)"
+                           (dayHeaderClicked)="dayHeaderClicked($event.day)"
+                           (hourClicked)="hourClicked($event.hour)"
+                           (segmentClicked)="segmentClicked('Clicked', $event.segment)"
+                           (eventClicked)="eventClicked('Clicked', $event.event)"
+                           (eventTimesChanged)="eventTimesChanged($event)"
+                           [refresh]="refresh">
+  </calendar-scheduler-view>
 </ng-container>

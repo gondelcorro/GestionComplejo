@@ -1,0 +1,77 @@
+<br>
+<div class="center">
+  <mat-form-field appearance="fill">
+    <mat-label>Seleccione la semana</mat-label>
+    <mat-date-range-input [rangePicker]="picker" [formGroup]="range" >
+      <input matStartDate formControlName="inicio" placeholder="Fecha inicio" (dateChange)="inicioChange($event)">
+      <input matEndDate formControlName="fin" placeholder="Fecha fin" (dateChange)="finChange($event)">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  <span class="example-spacer"></span>
+  <button mat-button style="font-size: 13px;" (click)="generarPdf()">
+    <mat-icon [ngStyle]="{'color': '#1F8A4D'}">picture_as_pdf</mat-icon>
+    &nbsp;
+    <span style="color: black">Descarga PDF</span>
+  </button>
+  <button mat-button style="font-size: 13px;" (click)="downloadExcel()">
+    <mat-icon [ngStyle]="{'color': '#1F8A4D'}">summarize</mat-icon>
+    &nbsp;
+    <span style="color: black">Descarga Excel</span>
+  </button>
+</div>
+
+<div class="example-container">
+  <table mat-table [dataSource]="balanceSemanal" matSort class="mat-elevation-z8">
+
+    <!--GROUP HEADER-->
+    <ng-container matColumnDef="{{columnGroup}}" *ngFor="let columnGroup of columnsGroupHeader; index as i">
+      <div *ngIf="i == 0 || i == 4">
+        <th style="text-align: center" mat-header-cell *matHeaderCellDef colspan="1"></th>
+      </div>
+      <div *ngIf="i > 0 && i != 4">
+        <th style="text-align: center" mat-header-cell *matHeaderCellDef colspan="2"> {{columnGroup}} </th>
+      </div>
+    </ng-container>
+
+    <!--HEADER COLUMNS-->
+    <ng-container matColumnDef="{{column.idCol}}" *ngFor="let column of columnsToDisplay; index as i">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column.titleCol}} </th>
+      <div *ngIf="i == 0">
+        <td class="align-left" style="padding-left: 10px !important;" mat-cell
+            *matCellDef="let element"> {{element[column.idCol]}} </td>  <!-- COLUMNS-->
+        <td class="align-left" mat-footer-cell *matFooterCellDef> Totales:</td>  <!--FOOTER COLUMNS-->
+      </div>
+      <div *ngIf="i > 0">
+        <div *ngIf="i == 1 || i == 2 || i == 3 || i == 4">
+          <td class="align-right" style="padding-right: 10px !important;" mat-cell
+              *matCellDef="let element"> {{element[column.idCol] }} </td>  <!-- COLUMNS FORMAT NUMBER-->
+          <td class="align-right" style="padding-right: 10px !important;" mat-footer-cell
+              *matFooterCellDef>{{getTotalForColum(column.idCol)}} </td>
+        </div>
+        <div *ngIf="i == 5 || i == 6 || i == 7 ">
+          <td class="align-right" style="padding-right: 10px !important;" mat-cell
+              *matCellDef="let element"> {{element[column.idCol] | currency: "ARS" }} </td>
+          <!-- COLUMNS FORMAT CURRENCY-->
+          <td class="align-right" style="padding-right: 10px !important;" mat-footer-cell
+              *matFooterCellDef>{{getTotalForColum(column.idCol) | currency: "ARS"}} </td>
+        </div>
+      </div>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsGroupHeader; sticky:true"></tr>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplayMap; sticky:true"></tr>
+
+    <!--ULTIMA FILA EN NEGRITO-->
+    <!--<tr mat-row *matRowDef="let row; columns: columnsToDisplayMap; let last = last" [ngClass]="{black:last}"></tr>-->
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplayMap"></tr>
+
+    <tr style="background-color: #f5f5f5" mat-footer-row *matFooterRowDef="columnsToDisplayMap"></tr>
+
+  </table>
+</div>
+
+
+
+

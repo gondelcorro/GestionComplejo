@@ -1,35 +1,49 @@
-<div flex fxLayout="row wrap" style="justify-content: left" >
- <!-- style="display: flex; flex-direction: row; justify-content: center">  fxLayout.lt-md="row wrap" fxLayoutGap="10px grid"-->
-  <mat-card *ngFor="let cancha of canchas" class="cancha-card">
-    <mat-card-header>
-      <mat-card-title>Cancha N° {{ cancha.numero }}</mat-card-title>
-      <mat-card-subtitle>Tipo de cancha: {{ cancha.tipo }}</mat-card-subtitle>
-    </mat-card-header>
-    <!-- <img mat-card-image src="assets/images/cancha.png" alt="Cancha" style="width: 90%;"> -->
-    <mat-card-content>
-      <!-- {{prestamo.fechaPrestamo | date:'dd-MM-yyyy'}} -->
-      <!--       <p class="mat-h3">Precio día: </p>
-            <p class="mat-h3">Precio noche: </p> -->
-      <div class="flex-row">
-        <div class="dia">
-          <img src="assets/images/icono_dia.png" />
-          <span><strong>Precio día</strong></span>
-          <span>{{ cancha.precioDia }}</span>
-        </div>
-        <div class="noche">
-          <img src="assets/images/icono_noche.png" />
-          <span><strong>Precio noche</strong></span>
-          <span>{{ cancha.precioNoche }}</span>
-        </div>
-      </div>
-    </mat-card-content>
-    <mat-card-actions align="center">
-      <button mat-stroked-button color="primary">Ver reservas</button>
-      <button mat-stroked-button color="accent" (click)="abrirDialog(cancha)">Editar</button>
-    </mat-card-actions>
-  </mat-card>
+<br>
+<div>
+  <h1><strong>Canchas</strong></h1>
 </div>
 
-<button mat-fab color="primary" style="position: fixed; right: 3%; bottom: 5%" (click)="abrirDialog(null)">
+<div *ngIf="canchas.length == 0">
+  <h2 style="margin-left: 20px">* Aún no tenés canchas registradas.</h2>
+</div>
+
+<div *ngIf="canchas.length > 0">
+  <mat-divider></mat-divider>
+  <br>
+  <div flex fxLayout="row wrap" style="justify-content: normal">
+    <!-- style="display: flex; flex-direction: row; justify-content: center">  fxLayout.lt-md="row wrap" fxLayoutGap="10px grid"-->
+    <mat-card *ngFor="let cancha of canchas" class="cancha-card">
+      <mat-card-header>
+        <mat-card-title>Cancha N° {{ cancha.numero }}</mat-card-title>
+        <mat-card-subtitle>Tipo de cancha: {{ cancha.tipo }}</mat-card-subtitle>
+      </mat-card-header>
+      <!-- <img mat-card-image src="assets/images/cancha.png" alt="Cancha" style="width: 90%;"> -->
+      <mat-card-content>
+        <div class="flex-row">
+          <div class="dia">
+            <img src="assets/images/icono_dia.png"/>
+            <br>
+            <span style="color: #f9a825; margin-bottom: 5px"><strong>Precio día</strong></span>
+            <span><strong>{{ cancha.precioDia | currency: 'ARS'}}</strong></span>
+          </div>
+          <div class="noche">
+            <img src="assets/images/icono_noche.png"/>
+            <br>
+            <span style="color: #AB2A3E; margin-bottom: 5px"><strong>Precio noche</strong></span>
+            <span><strong>{{ cancha.precioNoche | currency: 'ARS'}}</strong></span>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions align="center">
+        <button *ngIf="!cancha.habilitada" mat-raised-button color="basic" (click)="habilitar(cancha)">Habilitar</button>
+        <button *ngIf="cancha.habilitada" mat-raised-button color="basic" (click)="deshabilitar(cancha)">Deshabilitar</button>
+        <span style="width: 30px"></span>
+        <button mat-raised-button color="primary" (click)="abrirDialog(cancha)">Editar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<button mat-fab color="warn" style="position: fixed; right: 3%; bottom: 5%" (click)="abrirDialog(null)">
   <mat-icon>add_box</mat-icon>
 </button>

@@ -1,7 +1,9 @@
-export class Pago{
-    numeroReferencia: string;
-    estado: boolean;
-    medioPago: string;
-    importe: number;
-    fecha: string;
+export class Pago {
+  externalReference: string;
+  numeroPago: number;
+  estado: string;
+  medioPago: string;
+  importe: number;
+  fecha: Date;
+  reintegro: boolean;
 }

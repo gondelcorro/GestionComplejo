@@ -1,0 +1,59 @@
+<h2>Nueva Reserva</h2>
+<mat-divider></mat-divider>
+<br>
+<form [formGroup]="form">
+  <div class="jugador">
+    <mat-form-field style="width: 75%">
+      <mat-label>Jugador</mat-label>
+      <input matInput placeholder="Ingrese un correo" formControlName="jugador" [matAutocomplete]="autoJug" required>
+      <mat-autocomplete #autoJug="matAutocomplete" [displayWith]="fcionMostrarJugador"
+                        (optionSelected)="updateJugadorSelect($event.option.value)">
+        <mat-option *ngFor="let jugador of jugadoresFiltrados | async" [value]="jugador">
+          {{jugador.correo}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <span class="example-spacer"></span>
+    <button mat-stroked-button (click)="irAFormRegistro()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div class="center">
+    <strong>Fecha de reserva: </strong> <span class="example-spacer"></span>  {{fechaFormateada}}
+  </div>
+  <div class="center">
+    <strong>Hora de inicio: </strong> <span class="example-spacer"></span> {{horaInicio}}
+  </div>
+  <div class="center" style="margin-top: 5px; margin-bottom: 5px">
+    <strong>Hora de fin: </strong> <span class="example-spacer"></span>
+    <mat-form-field>
+      <input matInput formControlName="horaFin" required
+             [(ngModel)]="selectedTime"
+             [ngxMatTimepicker]="pickerA"
+             [format]="format"
+             readonly/>
+      <mat-icon matSuffix (click)="pickerA.open()">
+        watch_later
+      </mat-icon>
+    </mat-form-field>
+    <ngx-mat-timepicker #pickerA (closed)="calcularImporte(null)"
+                        [defaultTime]="horaInicio"
+                        [minutesGap]="minutesGap">
+    </ngx-mat-timepicker>
+  </div>
+  <div class="center" *ngIf="mostrarImporte">
+    <strong>Importe a pagar: </strong> <span class="example-spacer"></span>  {{importeAPagar | currency: 'ARS'}}
+  </div>
+</form>
+
+<mat-divider></mat-divider>
+<br>
+<div align="end">
+  <button mat-raised-button color="basic" mat-dialog-close>
+    Cerrar
+  </button>
+  <span style="margin-left: 15px"></span>
+  <button mat-raised-button color="primary" (click)="reservarCancha()" [disabled]="!form.valid">
+    Reservar
+  </button>
+</div>

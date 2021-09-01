@@ -1,6 +1,6 @@
 .cancha-card {
   width: 250px;
-  height: 280px;
+  height: 300px;
   margin: 15px;
 }
 
@@ -21,7 +21,7 @@ div {
 }
 
 .dia {
-  background: lightblue;
+/*  background: lightblue;*/
   color: black;
   margin-right: 10px;
   display: flex;
@@ -31,7 +31,7 @@ div {
 }
 
 .noche {
-  background: rgba(0,0,0,0.1);
+/*  background: rgba(0,0,0,0.1);*/
   color: black;
   margin-right: 10px;
   display: flex;

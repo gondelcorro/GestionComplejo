@@ -1,11 +1,13 @@
 import { ComplejoSharedService } from './../../service/complejo-shared.service';
 import { Complejo } from './../../model/complejo';
 import { ComplejoService } from './../../service/complejo.service';
-import { LoginService } from './../../service/login.service';
+import { LoginService } from '../../shared/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
+import {MatDialog} from '@angular/material/dialog';
+import {CambioClaveComponent} from '../configuracion/cambio-clave/cambio-clave.component';
 
 @Component({
   selector: 'app-main-layout',
@@ -19,16 +21,25 @@ export class MainLayoutComponent implements OnInit {
   imagenLogo : any;
 
   constructor(public route : ActivatedRoute, private loginService: LoginService, private complejoService: ComplejoService,
-     private complejoShared: ComplejoSharedService, private sanitization: DomSanitizer) { }
+     private complejoShared: ComplejoSharedService, private sanitization: DomSanitizer, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.cargarComplejo();
+
   }
 
   async cargarComplejo(){
     this.complejo = await this.complejoService.obtenerComplejo(this.correoComplejo).toPromise();
     this.complejoShared.setComplejo(this.complejo);
+    this.complejoService.complejoCambio.next(this.complejo);
+    console.log(this.complejo);
     this.mostrarImagen();
+  }
+
+  cambiarClave(){
+    this.dialog.open(CambioClaveComponent, {
+      width: '350px'
+    });
   }
 
   cerrarSesion(){

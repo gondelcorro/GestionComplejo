@@ -7,7 +7,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 })
 export class GuardGuard implements CanActivate {
 
-  constructor(private loginService: LoginService, private router: Router) { 
+  constructor(private loginService: LoginService) {
 
   }
 
@@ -23,5 +23,5 @@ export class GuardGuard implements CanActivate {
       return false;
     }
   }
-  
+
 }

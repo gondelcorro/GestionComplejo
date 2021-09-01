@@ -1,4 +1,10 @@
-<!--CUANDO LA NAVEGACION SEA HASTA ESTA RUTA (COMPONENTE PADRE) MUESTRO LO Q ESTA DENTRO DEL DIV SOLAMENTE 
+<div *ngIf="isLoading | async" class="overlay">
+  <mat-progress-spinner class="spinner"  color="primary"
+                        mode="indeterminate" value="50">
+  </mat-progress-spinner>
+</div>
+
+<!--CUANDO LA NAVEGACION SEA HASTA ESTA RUTA (COMPONENTE PADRE) MUESTRO LO Q ESTA DENTRO DEL DIV SOLAMENTE
 LA RUTA VA A SER LA DEL LOGIN, PORQ EL RUTEO ESTA DEFINIDO ASI, ENTONCS INJECTO EL COMPONENTE LOGIN -->
 <div *ngIf="_activeRoute.children.length === 0">
   <app-main-layout></app-main-layout>

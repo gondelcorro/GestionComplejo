@@ -1,0 +1,16 @@
+/*ESTILOS BUTTON TOOGLE*/
+
+.mat-button-toggle{
+  background-color: #ffffff;
+  color: #212121;
+}
+
+.mat-button-toggle:hover {
+  background-color: transparent;
+  color: #1F8A4D !important;
+}
+
+.mat-button-toggle-checked {
+  background-color: #1F8A4D;
+  color: #ffffff !important;
+}

@@ -1,0 +1,21 @@
+<br>
+<div>
+  <h1><strong>Balance</strong></h1>
+</div>
+<mat-divider></mat-divider>
+<br>
+<mat-drawer-container class="example-container">
+  <mat-drawer-content style="padding: 30px;">
+    <div class="center">
+      <mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)]="tituloButtonToogle" [value]="selectedFilterProd" (change)="onValChange(group.value)">
+        <mat-button-toggle value="Balance diario">Balance diario</mat-button-toggle>
+        <mat-button-toggle value="Balance semanal">Balance semanal</mat-button-toggle>
+        <mat-button-toggle value="Balance mensual">Balance mensual</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <br/>
+    <hr>
+    <app-opciones [filterSelected]="selectedFilterProd"></app-opciones>
+  </mat-drawer-content>
+</mat-drawer-container>
+

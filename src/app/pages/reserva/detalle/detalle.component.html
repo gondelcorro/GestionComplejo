@@ -1,0 +1,31 @@
+<div fxLayout="row">
+  <h2>Detalle Reserva</h2>
+  <button mat-icon-button style="left: 40%;" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-divider></mat-divider>
+<br>
+<div style="margin-left: 20px">
+  <p><span style="font-weight: bold">Codigo: </span>{{codigoReserva}}</p>
+  <p><span style="font-weight: bold">Jugador: </span>{{reserva?.jugador.nomYApe}}</p>
+  <p><span style="font-weight: bold">Cancha: </span> N° {{reserva?.cancha.numero}}</p>
+  <p><span style="font-weight: bold">Hora inicio: </span>{{reserva?.horaInicio}}</p>
+  <p><span style="font-weight: bold">Hora fin: </span>{{reserva?.horaFin}}</p>
+  <p><span style="font-weight: bold">Estado: </span>{{reserva?.estado}}</p>
+  <mat-hint *ngIf="reserva?.estado==reservaAnulada && tieneReintegro" style="color: #AB2A3E; text-align: justify">* La reserva tiene un reintegro abonado.</mat-hint>
+</div>
+<mat-divider *ngIf="reserva?.estado!=reservaFinalizada"></mat-divider>
+<br>
+<div align="end">
+  <button *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada" mat-raised-button color="warn" (click)="anularReserva()">
+    Anular
+  </button>
+  <button *ngIf="reserva?.estado==reservaAnulada && !tieneReintegro" mat-raised-button color="accent" (click)="reintegrar()">
+    Reintegro
+  </button>
+  <span style="margin-left: 15px" *ngIf="reserva?.estado==reservaAnulada"></span>
+  <button *ngIf="reserva?.estado==reservaAnulada && !esReservaPasada" mat-raised-button color="primary" (click)="nuevaReserva()">
+    Nueva reserva
+  </button>
+</div>

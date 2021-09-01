@@ -21,6 +21,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [],
@@ -46,7 +53,14 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatCardModule,
     MatMenuModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatBottomSheetModule,
+    MatPaginatorModule,
+    MatChipsModule,
+    MatButtonToggleModule,
+    MatTabsModule
   ],
     //AGREGAR EL EXPORTS TB PARA LOS COMP DE ANG MAT SI O SI
     //NO OLVIDAR REGISTRAR ESTE MODULO EN EL APPMODULE
@@ -71,7 +85,14 @@ import {MatNativeDateModule} from '@angular/material/core';
       MatCardModule,
       MatMenuModule,
       MatDatepickerModule,
-      MatNativeDateModule
-    ],
+      MatNativeDateModule,
+      MatProgressSpinnerModule,
+      MatProgressBarModule,
+      MatBottomSheetModule,
+      MatPaginatorModule,
+      MatChipsModule,
+      MatButtonToggleModule,
+      MatTabsModule
+    ]
 })
 export class MaterialModule { }

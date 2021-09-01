@@ -1,0 +1,10 @@
+<mat-selection-list #dias (selectionChange)="cambiarDias(dias.selectedOptions.selected)">
+  <mat-list-option *ngFor="let dia of diasSemana" [selected]="dia.checked" [value]="dia">
+    {{dia.nomDia}}
+  </mat-list-option>
+</mat-selection-list>
+
+<!--
+<p>
+  Options selected: {{dias.selectedOptions.selected.length}}
+</p>-->

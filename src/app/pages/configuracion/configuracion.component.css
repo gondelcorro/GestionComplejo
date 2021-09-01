@@ -1,0 +1,36 @@
+.example-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fields-datos{
+  width: 100%;
+}
+
+.label-horarios{
+  padding-top: 18px;
+  margin-right: 25px;
+}
+
+.margin{
+  margin-right: 30px;
+}
+
+.anchoPanel{
+  width: 200px;
+}
+
+.ngx-timepicker-field-example{
+  height: 40px;
+  margin-right: 30px;
+}
+
+.mat-chip {
+ margin-left: 20px !important;
+ margin-top: 10px !important;
+}
+
+.ver-imagen{
+  padding: 5px 0px 0px 15px;
+}

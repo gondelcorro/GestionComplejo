@@ -12,11 +12,11 @@ export class ComplejoSharedService {
     this.complejo = new Complejo();
    }
 
-  public getComplejo() : Complejo{
+  public getComplejo(): Complejo{
     return this.complejo;
   }
 
-  public setComplejo(complejo: Complejo) : void{
+  public setComplejo(complejo: Complejo): void{
     this.complejo = complejo;
   }
 }

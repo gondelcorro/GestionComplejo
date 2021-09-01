@@ -1,87 +1,87 @@
 <mat-toolbar color="primary" class="mat-elevation-z10" style="z-index: 10!important;">
-    <mat-toolbar-row>
-        <button mat-icon-button (click)="sidenav.toggle()" style="margin-left: 25px;">
-            <!--SI EL SIDENAV ESTA ABIERTO TAL ICONO SI CERRADO TAL OTRO  -->
-            <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon"
-                *ngIf="!sidenav.opened">menu</mat-icon>
-            <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon"
-                *ngIf="sidenav.opened">menu_open</mat-icon> Menú
-        </button>
-        <img style="margin: auto; top: 10px; height: 45px;" class="mt-3" src="assets/images/logo_large.png">
-        <!--         <button mat-icon-button style="position : fixed; right: 30px; top: 10px;" [matMenuTriggerFor]="menu">
-            <mat-icon aria-hidden="false" aria-label="Example user verified icon">exit_to_app</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="cerrarSesion();">Cerrar sesión</button>
-        </mat-menu> -->
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="sidenav.toggle()" style="margin-left: 25px;">
+      <!--SI EL SIDENAV ESTA ABIERTO TAL ICONO SI CERRADO TAL OTRO  -->
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon"
+                *ngIf="!sidenav.opened">menu
+      </mat-icon>
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon"
+                *ngIf="sidenav.opened">menu_open
+      </mat-icon>
+      Menú
+    </button>
+    <img class="logo" src="assets/images/logo_large.png">
+    <!--         <button mat-icon-button style="position : fixed; right: 30px; top: 10px;" [matMenuTriggerFor]="menu">
+        <mat-icon aria-hidden="false" aria-label="Example user verified icon">exit_to_app</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="cerrarSesion();">Cerrar sesión</button>
+    </mat-menu> -->
 
-        <div class="avatar">
-            <ngx-avatar [name]='complejo.nombre' size="35">
-            </ngx-avatar>
-            <button mat-button color="profile" [disableRipple]="true" [matMenuTriggerFor]="menu">
-                <span>{{complejo.nombre}}</span>
-                <mat-icon>expand_more</mat-icon>
-            </button>
-        </div>
+    <div class="avatar">
+      <ngx-avatar [name]='complejo.nombre' size="35">
+      </ngx-avatar>
+      <button mat-button color="profile" [disableRipple]="true" [matMenuTriggerFor]="menu">
+        <span>{{complejo.nombre}}</span>
+        <mat-icon>expand_more</mat-icon>
+      </button>
+    </div>
 
-        <mat-menu #menu="matMenu" yPosition="below" xPosition='before' overlapTrigger="false">
-            <button mat-menu-item style="font-size: 13px;" routerLink="/modificar-datos">
-                <mat-icon>person</mat-icon>
-                <span>Modificar datos</span>
-            </button>
-            <button mat-menu-item style="font-size: 13px;" (click)="cerrarSesion()" href="javascript:void(0);">
-                <mat-icon>power_settings_new</mat-icon>
-                <span>Cerrar sesión</span>
-            </button>
-        </mat-menu>
+    <mat-menu #menu="matMenu" yPosition="below" xPosition='before' overlapTrigger="false">
+      <button mat-menu-item style="font-size: 13px;" (click)="cambiarClave()">
+        <mat-icon>password</mat-icon>
+        <span>Cambiar clave</span>
+      </button>
+      <button mat-menu-item style="font-size: 13px;" (click)="cerrarSesion()" href="javascript:void(0);">
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+    </mat-menu>
 
-    </mat-toolbar-row>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="side" opened style="width: 180px; padding-left: 10px;">
-        <br /><br />
-        <!-- <img style="display: block; margin: auto; height: 100px; width: 100px;" class="mt-3" src="assets/images/logo_rojo.png"> -->
-        <img style="display: block; margin: auto; height: 100px; width: 100px;" class="mt-3" [src]="imagenLogo"
-            alt="imagen">
-        <br />
-        <mat-nav-list>
-            <a mat-list-item [routerLink]="'/main-layout/dashboard'" style="cursor: pointer;">
-                <mat-icon class="example-icon-1">dashboard</mat-icon> &nbsp; Resumen
-            </a>
-            <a mat-list-item [routerLink]="'/main-layout/reserva'" style="cursor: pointer">
-                <mat-icon class="example-icon-1">calendar_today</mat-icon> &nbsp; Reservas
-            </a>
-            <a mat-list-item [routerLink]="'/main-layout/pago'" style="cursor: pointer">
-                <mat-icon class="example-icon-1">payments</mat-icon> &nbsp; Pagos
-            </a>
-            <a mat-list-item [routerLink]="'/main-layout/cancha'" style="cursor: pointer;">
-                <mat-icon class="example-icon-1">sports_soccer</mat-icon> &nbsp; Canchas
-            </a>
-            <a mat-list-item [routerLink]="'/main-layout/informe'" style="cursor: pointer">
-                <mat-icon class="example-icon-1">description</mat-icon> &nbsp; Informes
-            </a>
-        </mat-nav-list>
-    </mat-sidenav>
-    <!--CONTENIDO DINAMICO SEGUN NAVEGACION-->
-    <mat-sidenav-content class="container">
-        <div style="height: 100vh;">
-            <div *ngIf="route.children.length === 0">
-                <app-dashboard></app-dashboard>
-            </div>
-            <!--CUANDO LA NAVEGACION SEA HASTA UN COMP HIJO (POR EJ /dashboard) MUESTRO EL CONTENIDO DEL HIJO Y NO DEL PADRE
-            EL LOGIN AL INICIAR SESION VA A SER EL Q ME LLEVE AL /DASHBOARD-->
-            <div>
-                <router-outlet *ngIf="route.children.length !== 0"></router-outlet>
-            </div>
-        </div>
-    </mat-sidenav-content>
+  <mat-sidenav #sidenav mode="side" opened style="width: 250px;">
+    <br/><br/>
+    <!-- <img style="display: block; margin: auto; height: 100px; width: 100px;" class="mt-3" src="assets/images/logo_rojo.png"> -->
+    <img style="display: block; margin: auto; height: 150px; width: 150px;" [src]="imagenLogo"
+         alt="imagen">
+    <br><br>
+    <mat-nav-list style="margin-left: 20px">
+      <a mat-list-item [routerLink]="'/main-layout/dashboard'" style="cursor: pointer;">
+        <mat-icon class="example-icon-1">dashboard</mat-icon> &nbsp; Resumen
+      </a>
+      <a mat-list-item [routerLink]="'/main-layout/reserva'" style="cursor: pointer">
+        <mat-icon class="example-icon-1">calendar_today</mat-icon> &nbsp; Reservas
+      </a>
+      <a mat-list-item [routerLink]="'/main-layout/cancha'" style="cursor: pointer;">
+        <mat-icon class="example-icon-1">sports_soccer</mat-icon> &nbsp; Canchas
+      </a>
+    <!--  <a mat-list-item [routerLink]="'/main-layout/jugador'" style="cursor: pointer">
+        <mat-icon class="example-icon-1">person</mat-icon> &nbsp; Jugadores
+      </a>-->
+      <a mat-list-item [routerLink]="'/main-layout/pago'" style="cursor: pointer">
+        <mat-icon class="example-icon-1">payments</mat-icon> &nbsp; Pagos
+      </a>
+      <a mat-list-item [routerLink]="'/main-layout/balance'" style="cursor: pointer">
+        <mat-icon class="example-icon-1">monetization_on</mat-icon> &nbsp; Balance
+      </a>
+      <a mat-list-item [routerLink]="'/main-layout/configuracion'" style="cursor: pointer">
+        <mat-icon class="example-icon-1">settings</mat-icon> &nbsp; Configuración
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <!--CONTENIDO DINAMICO SEGUN NAVEGACION-->
+  <mat-sidenav-content class="container">
+    <router-outlet *ngIf="route.children.length !== 0"></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>
 
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <div style="margin: auto;">
-            <p class="mat-caption">Se Juega Santiago - Sistema de Reserva de Canchas @Copyright 2020</p>
-        </div>
-    </mat-toolbar-row>
+  <mat-toolbar-row>
+    <div style="margin: auto; padding-top: 15px">
+      <p class="mat-caption">Se Juega Santiago - Sistema de Reserva de Canchas @Copyright 2020</p>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>

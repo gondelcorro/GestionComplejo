@@ -1,0 +1,240 @@
+<br>
+<div class="alineacion-titulo">
+  <h1><strong>Configuración</strong></h1>
+</div>
+<mat-divider></mat-divider>
+<br>
+<mat-card>
+  <mat-card-content>
+    <h2 class="example-h2">Datos del complejo</h2>
+    <section>
+      <form #form1 [formGroup]="formDatosComplejo" class="example-container">
+        <div fxLayout="row">
+          <mat-form-field class="fields-datos">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Nombre" formControlName="nombre" [(ngModel)]="complejo.nombre" required>
+            <mat-icon matSuffix>sports_soccer</mat-icon>
+          </mat-form-field>
+          <span style="width: 100px"></span>
+          <mat-form-field class="fields-datos">
+            <mat-label>Dirección</mat-label>
+            <input matInput placeholder="Direccion" formControlName="direccion" [(ngModel)]="complejo.direccion"
+                   required>
+            <mat-icon matSuffix>place</mat-icon>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <mat-form-field class="fields-datos">
+            <mat-label> Teléfono</mat-label>
+            <input matInput placeholder="Teléfono" formControlName="telefono" [(ngModel)]="complejo.telefono" required>
+            <mat-icon matSuffix>call</mat-icon>
+          </mat-form-field>
+          <span style="width: 100px"></span>
+          <mat-form-field class="fields-datos">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput placeholder="Correo" formControlName="correo" [(ngModel)]="complejo.correo" required>
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <mat-form-field style="width: 75%">
+            <mat-label> Imagen</mat-label>
+            <ngx-mat-file-input formControlName="imagen" [multiple]="false" [accept]="'.jpg'" required>
+            </ngx-mat-file-input>
+            <mat-hint>Tamaño máximo de la imagen 3MB</mat-hint>
+          </mat-form-field>
+          <div class="ver-imagen">
+            <button mat-raised-button (click)="verImagen(complejo, 1)">Ver imagen</button>
+          </div>
+          <span style="width: 100px"></span>
+          <mat-form-field style="width: 75%">
+            <mat-label> Logo</mat-label>
+            <ngx-mat-file-input formControlName="logo" [multiple]="false" [accept]="'.jpg'" required>
+            </ngx-mat-file-input>
+            <mat-hint>Tamaño máximo del logo 3MB</mat-hint>
+          </mat-form-field>
+          <div class="ver-imagen">
+            <button mat-raised-button (click)="verImagen(complejo, 0)">Ver imagen</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </mat-card-content>
+</mat-card>
+<br>
+<mat-card>
+  <mat-card-content>
+    <h2>Días y horarios de atención</h2>
+    <br>
+    <section>
+      <mat-checkbox class="margin" [(ngModel)]="checkTodos" (change)="changeTodosDias()">Todos los días</mat-checkbox>
+      <mat-checkbox class="margin" [(ngModel)]="checkLunVier" (change)="changeLunVier()">De lunes a viernes
+      </mat-checkbox>
+      <mat-checkbox class="margin" [(ngModel)]="checkPersonalizado" (change)="abrirDiasAtencion()">Personalizado
+      </mat-checkbox>
+    </section>
+    <br>
+    <section>
+      <form #form2 [formGroup]="formDiasYHorarios">
+        <div fxLayout="row">
+          <mat-label class="label-horarios">Apertura:</mat-label>
+          <div class="ngx-timepicker-field-example">
+            <mat-form-field>
+              <input matInput formControlName="apertura" required
+                     [ngxMatTimepicker]="pickerA"
+                     [format]="24"
+                     readonly
+                     [(ngModel)]="complejo.apertura"/>
+              <mat-icon matSuffix (click)="pickerA.open()">
+                watch_later
+              </mat-icon>
+            </mat-form-field>
+            <ngx-mat-timepicker #pickerA
+                                [hoursOnly]="false"
+                                [minutesGap]="30">
+            </ngx-mat-timepicker>
+          </div>
+          <span style="width: 50px"></span>
+          <mat-label class="label-horarios">Cierre:</mat-label>
+          <div class="ngx-timepicker-field-example">
+            <mat-form-field>
+              <input matInput formControlName="cierre" required
+                     [ngxMatTimepicker]="pickerB"
+                     [format]="24"
+                     readonly
+                     [(ngModel)]="complejo.cierre"/>
+              <mat-icon matSuffix (click)="pickerB.open()">
+                watch_later
+              </mat-icon>
+            </mat-form-field>
+            <ngx-mat-timepicker #pickerB
+                                [hoursOnly]="false"
+                                [minutesGap]="30">
+            </ngx-mat-timepicker>
+          </div>
+          <mat-chip-list>
+            <mat-chip color="primary" selected selectable="false">
+              <mat-icon>info</mat-icon>
+              <span style="width: 5px"></span>
+              {{chipText1}}
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+        <br><br>
+        <div>
+          <mat-label style="font-size: 15px; font-weight: bold">Horario Diurno</mat-label>
+        </div>
+        <br>
+        <div fxLayout="row">
+          <mat-label class="label-horarios">Inicio:</mat-label>
+          <div class="ngx-timepicker-field-example">
+            <mat-form-field>
+              <input matInput formControlName="inicio" required
+                     [ngxMatTimepicker]="pickerC"
+                     [format]="24"
+                     readonly
+                     [(ngModel)]="complejo.diurnoIni"/>
+              <mat-icon matSuffix (click)="pickerC.open()">
+                watch_later
+              </mat-icon>
+            </mat-form-field>
+            <ngx-mat-timepicker #pickerC
+                                [hoursOnly]="false"
+                                [minutesGap]="30">
+            </ngx-mat-timepicker>
+          </div>
+          <span style="width: 50px"></span>
+          <mat-label class="label-horarios">Fin:</mat-label>
+          <div class="ngx-timepicker-field-example">
+            <mat-form-field>
+              <input matInput formControlName="fin" required
+                     [ngxMatTimepicker]="pickerD"
+                     [format]="24"
+                     readonly
+                     [(ngModel)]="complejo.diurnoFin"/>
+              <mat-icon matSuffix (click)="pickerD.open()">
+                watch_later
+              </mat-icon>
+            </mat-form-field>
+            <ngx-mat-timepicker #pickerD
+                                [hoursOnly]="false"
+                                [minutesGap]="30">
+            </ngx-mat-timepicker>
+          </div>
+          <mat-chip-list>
+            <mat-chip color="basic" selected selectable="false">
+              <mat-icon>info</mat-icon>
+              <span style="width: 5px"></span>
+              {{chipText2}}
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+        <br>
+      </form>
+    </section>
+  </mat-card-content>
+</mat-card>
+<br>
+<mat-card>
+  <mat-card-content>
+    <h2>Configuración adicional</h2>
+    <br>
+    <section>
+      <form #form3 [formGroup]="formToken">
+        <div fxLayout="row">
+          <mat-form-field class="fields-datos">
+            <mat-label>Horas</mat-label>
+            <input matInput type="number" min="1" max="12" placeholder="Cant. Hhs. edición/anulación" formControlName="hsMinEduAnu" [(ngModel)]="complejo.hsMinEdiAnu" required>
+            <mat-hint>Representa el tiempo mínimo de anterioridad con el que se podrán editar/anular las reservas</mat-hint>
+          </mat-form-field>
+          <span style="margin-right: 35px"></span>
+          <mat-form-field class="fields-datos">
+            <mat-label>Horas</mat-label>
+            <input matInput type="number" min="1" max="12" placeholder="Cant. Hs. max reserva" formControlName="hsMaxReserva" [(ngModel)]="complejo.hsMaxReserva" required>
+            <mat-hint>Representa la máxima cantidad de horas que un jugador puede reservar de manera continua en una cancha</mat-hint>
+          </mat-form-field>
+        </div>
+        <br><br>
+        <mat-form-field style="width: 100%" appearance="fill">
+          <mat-label>Access token MP</mat-label>
+          <input type="text" matInput required formControlName="token" [(ngModel)]="complejo.accessToken"
+                 placeholder="Ingrese su access token generado en su cuenta de mercado pago">
+          <mat-icon matSuffix>vpn_key</mat-icon>
+        </mat-form-field>
+      </form>
+      <br>
+      <div fxLayout="row">
+        <mat-checkbox style="margin-top: 10px; margin-right: 5px" [(ngModel)]="complejo.cierreTemporal ">
+          Cerrar el complejo temporalmente
+        </mat-checkbox>
+        <mat-chip-list>
+          <mat-chip color="warn" selected selectable="false">
+            <mat-icon>info</mat-icon>
+            <span style="width: 5px"></span>
+            {{chipText3}}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+      <br>
+      <div *ngIf="complejo.cierreTemporal">
+        <mat-form-field appearance=standard style="width: 300px">
+          <mat-label>Seleccione una fecha</mat-label>
+          <input matInput [matDatepicker]="picker" [formControl]="cierreTempHasta" [min]="minDate" (dateChange)="onDateChange($event)" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker ></mat-datepicker>
+        </mat-form-field>
+        <span style="margin-right: 30px"></span>
+        <mat-hint>Esta fecha se usará para indicarle a los jugadores hasta cuando permanecerá cerrado el complejo</mat-hint>
+      </div>
+    </section>
+  </mat-card-content>
+</mat-card>
+
+<br>
+<div align="end">
+  <button mat-raised-button color="primary" (click)="guardarCambios()"
+          [disabled]="!formDatosComplejo.valid || !formDiasYHorarios.valid || !formToken.valid ||
+          (!checkTodos && !checkLunVier && !checkPersonalizado)">
+    Guardar cambios
+  </button>
+</div>

@@ -1,0 +1,16 @@
+.container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0px 10px 0px;
+}
+
+.center{
+  //background:gold;
+  width:55vw;
+}
+
+.right{
+  //background:gray;
+  width:45vw;
+}
