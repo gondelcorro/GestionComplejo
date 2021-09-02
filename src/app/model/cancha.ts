@@ -9,4 +9,5 @@ export class Cancha{
     precioDia: number;
     precioNoche: number;
     habilitada: boolean;
+    fechaDeshabilitada: string;
 }

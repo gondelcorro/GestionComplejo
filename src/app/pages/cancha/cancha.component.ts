@@ -53,6 +53,7 @@ export class CanchaComponent implements OnInit {
 
   habilitar(cancha: Cancha){
     cancha.habilitada = true;
+    cancha.fechaDeshabilitada = null;
     this.canchaService.editar(cancha).subscribe(result => {
       if(result == 1){
         this.snackbar.open("Se habilitó la cancha correctamente", 'Aviso', {duration: 4000});
