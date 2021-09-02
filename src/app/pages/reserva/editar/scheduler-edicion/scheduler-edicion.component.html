@@ -1,0 +1,30 @@
+<ng-container [ngSwitch]="view">
+  <calendar-scheduler-view *ngSwitchCase="'day'"
+                           [viewDate]="viewDate"
+                           [events]="events"
+                           [locale]="locale"
+                           [viewDays]="viewDays"
+                           [weekStartsOn]="weekStartsOn"
+                           [excludeDays]="excludeDays"
+                           [startsWithToday]="startsWithToday"
+                           [hourSegments]="2"
+                           [dayStartHour]="dayStartHour"
+                           [dayEndHour]="dayEndHour"
+                           [dayModifier]="dayModifier"
+                           [hourModifier]="hourModifier"
+                           [segmentModifier]="segmentModifier"
+                           [showEventActions]="true"
+                           [showSegmentHour]="false"
+                           [zoomEventOnHover]="false"
+                           (viewDaysChanged)="viewDaysChanged($event)"
+                           (dayHeaderClicked)="dayHeaderClicked($event.day)"
+                           (hourClicked)="hourClicked($event.hour)"
+                           (segmentClicked)="segmentClicked('Clicked', $event.segment)"
+                           (eventClicked)="eventClicked('Clicked', $event.event)"
+                           (eventTimesChanged)="eventTimesChanged($event)"
+                           [refresh]="refresh">
+  </calendar-scheduler-view>
+</ng-container>
+
+
+

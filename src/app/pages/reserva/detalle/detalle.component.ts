@@ -8,6 +8,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {DatePipe} from '@angular/common';
 import {NuevaComponent} from '../nueva/nueva.component';
 import {PagoService} from '../../../service/pago.service';
+import {EditarComponent} from '../editar/editar.component';
 
 @Component({
   selector: 'app-detalle',
@@ -53,7 +54,7 @@ export class DetalleComponent implements OnInit {
 
   anularReserva() {
     if (this.reserva.estado == EstadoReserva.CONFIRMADA) {
-      this.reservaService.validarReglasReservaEdiAnu(this.reserva).subscribe(resp => {
+      this.reservaService.validarReglasAnulacion(this.reserva).subscribe(resp => {
         if (resp.codigo == 99) {
           this.dialog.closeAll(); //cierro el modal de detalle y me voy a la anulacion
           this.dialog.open(AnulacionComponent, {
@@ -90,6 +91,24 @@ export class DetalleComponent implements OnInit {
           this.snackbar.open("Error registrando el reintegro", 'Error', {duration: 5000});
         }
       });
+  }
+
+  editarReserva(){
+    if (this.reserva.estado == EstadoReserva.CONFIRMADA) {
+      this.reservaService.validarReglasEdicion(this.reserva, "regla1").subscribe(resp => {
+        if (resp.codigo == 99) {
+          this.dialog.closeAll(); //cierro el modal de detalle y me voy a la anulacion
+          this.dialog.open(EditarComponent, {
+            data: this.reserva,
+            disableClose: true,
+            width: '900px',
+            height:'630px'
+          });
+        } else {
+          this.snackbar.open(resp.descripcion, 'Aviso', {duration: 5000});
+        }
+      });
+    }
   }
 
 }

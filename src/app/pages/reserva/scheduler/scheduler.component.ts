@@ -28,7 +28,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {Reserva} from '../../../model/reserva';
 import {DatePipe} from '@angular/common';
 import {SchedulerService} from '../../../service/scheduler.service';
-import {SchedulerConfig} from 'angular-calendar-scheduler/modules/scheduler/scheduler-config';
 
 @Component({
   selector: 'app-scheduler',
@@ -45,6 +44,7 @@ export class SchedulerComponent implements OnInit {
   @Input() cancha: Cancha;
   @Input() fecha: Date;
   @Input() reservas: Reserva[];
+  @Input() reservaEdicion: Reserva;
   diasSemana: any[] = [];
 
   view: CalendarView = CalendarView.Week;
@@ -211,7 +211,8 @@ export class SchedulerComponent implements OnInit {
           data: {
             fechaReserva: segment.date,
             complejo: this.complejo,
-            cancha: this.cancha
+            cancha: this.cancha,
+            reservaEdicion: this.reservaEdicion
           },
           disableClose: true
         });

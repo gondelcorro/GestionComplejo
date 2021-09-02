@@ -52,6 +52,8 @@ import { CambioClaveComponent } from './pages/configuracion/cambio-clave/cambio-
 import { AnulacionComponent } from './pages/reserva/anulacion/anulacion.component';
 import { DeshabilitarComponent } from './pages/cancha/deshabilitar/deshabilitar.component';
 import { ConfirmaCambiosComponent } from './pages/configuracion/confirma-cambios/confirma-cambios.component';
+import {EditarComponent} from './pages/reserva/editar/editar.component';
+import { SchedulerEdicionComponent } from './pages/reserva/editar/scheduler-edicion/scheduler-edicion.component';
 // add this lines for lotties
 export function playerFactory() {
   return player;
@@ -85,7 +87,9 @@ export function playerFactory() {
     CambioClaveComponent,
     AnulacionComponent,
     DeshabilitarComponent,
-    ConfirmaCambiosComponent
+    ConfirmaCambiosComponent,
+    EditarComponent,
+    SchedulerEdicionComponent
   ],
   imports: [
     BrowserModule,

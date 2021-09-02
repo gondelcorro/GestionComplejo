@@ -48,12 +48,11 @@ export class SchedulerService {
         isDisabled: false,
         isCancelled: false
       }
-      console.log(statusEvent)
     }
     /*   setTimeout(()=>{
          this.eventosDeReserva.next(eventsReservas);
        }, 0.5);*/
-    return new Promise(resolve => setTimeout(() => resolve(eventsReservas), 0.02));
+    return new Promise(resolve => setTimeout(() => resolve(eventsReservas), 0.0));
   }
 
 }

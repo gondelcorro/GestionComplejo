@@ -32,6 +32,7 @@ export class NuevaComponent implements OnInit {
   jugadoresFiltrados: Observable<Jugador[]>;
   mostrarImporte = false;
   importeAPagar = 0;
+  ocultarSelectJugador = false;
 
   constructor(public dialogRefNueva: MatDialogRef<NuevaComponent>, @Inject(MAT_DIALOG_DATA) public data: any,
               private datePipe: DatePipe, private reservaService: ReservaService, private snackBar: MatSnackBar,
@@ -43,6 +44,7 @@ export class NuevaComponent implements OnInit {
     });
     this.fechaFormateada = this.datePipe.transform(data.fechaReserva, 'dd-MM-yyyy');
     this.horaInicio = this.datePipe.transform(data.fechaReserva, 'HH:mm');
+    this.ocultarSelectJugador = this.data.reservaEdicion != null;
   }
 
   ngOnInit(): void {
@@ -92,29 +94,67 @@ export class NuevaComponent implements OnInit {
           duration: 5000
         });
       } else {
-        let reserva = new Reserva();
-        reserva.fecha = this.fechaFormateada;
-        reserva.horaInicio = this.horaInicio;
-        reserva.horaFin = this.datePipe.transform(horaFinAsDate, 'HH:mm');
-        reserva.complejo = this.data.complejo;
-        reserva.cancha = this.data.cancha;
-        reserva.jugador = this.jugadorSelect;
-        reserva.automatica = false;
-        reserva.estado = EstadoReserva.CONFIRMADA;
-        this.dialogRefNueva.close();
-        this.reservaService.validarReglasReservaCreacion(reserva).subscribe(resp => {
-          if (resp.codigo == 99) {
-            this.dialog.open(ProcesandoReservaComponent, {
-              width: '350px',
-              disableClose: true,
-              data: reserva
-            });
-          } else {
-            this.snackBar.open(resp.descripcion, 'Error', {
-              duration: 5000
-            });
-          }
-        });
+        //NUEVA RESERVA
+        if(this.data.reservaEdicion == null){
+          let reserva = new Reserva();
+          reserva.fecha = this.fechaFormateada;
+          reserva.horaInicio = this.horaInicio;
+          reserva.horaFin = this.datePipe.transform(horaFinAsDate, 'HH:mm');
+          reserva.complejo = this.data.complejo;
+          reserva.cancha = this.data.cancha;
+          reserva.jugador = this.jugadorSelect;
+          reserva.automatica = false;
+          reserva.estado = EstadoReserva.CONFIRMADA;
+          this.dialogRefNueva.close();
+          this.reservaService.validarReglasReservaCreacion(reserva).subscribe(resp => {
+            if (resp.codigo == 99) {
+              this.dialog.open(ProcesandoReservaComponent, {
+                width: '350px',
+                disableClose: true,
+                data: reserva
+              });
+            } else {
+              this.snackBar.open(resp.descripcion, 'Error', {
+                duration: 5000
+              });
+            }
+          });
+        }else{
+          //EDICION DE RESERVA - SOLO LE MODIFICO LA CANCHA Y LA FECHA Y HORARIOS
+          this.data.reservaEdicion.cancha = this.data.cancha;
+          this.data.reservaEdicion.fecha = this.fechaFormateada;
+          this.data.reservaEdicion.horaInicio = this.horaInicio;
+          this.data.reservaEdicion.horaFin = this.datePipe.transform(horaFinAsDate, 'HH:mm');
+          this.reservaService.validarReglasEdicion(this.data.reservaEdicion, "otrasReglas").subscribe(resp =>{
+            if (resp.codigo == 99) {
+              this.reservaService.modificar(this.data.reservaEdicion).subscribe(data =>{
+                if(data == 1){
+                  const fechaIniFormateada = this.datePipe.transform(new Date(), 'dd-MM-yyyy');
+                  let fechaFin = new Date();
+                  fechaFin.setDate(fechaFin.getDate()+6);
+                  const fechaFinFormateada = this.datePipe.transform(fechaFin, 'dd-MM-yyyy');
+                  this.reservaService.verDisponibilidadxSemana(this.data.reservaEdicion.complejo.idComplejo, this.data.reservaEdicion.cancha.idCancha,
+                    fechaIniFormateada, fechaFinFormateada).subscribe(reservas => {
+                    this.reservaService.reservasCambio.next(reservas);
+                  });
+                  this.dialogRefNueva.close();
+                  this.snackBar.open("Reserva modificada exitosamente", 'Aviso', {
+                    duration: 5000
+                  });
+                }else{
+                  this.snackBar.open("Error al modificar la reserva", 'Error', {
+                    duration: 5000
+                  });
+                }
+              });
+            } else {
+              this.dialogRefNueva.close();
+              this.snackBar.open(resp.descripcion, 'Error', {
+                duration: 5000
+              });
+            }
+          });
+        }
       }
     }
   }

@@ -21,6 +21,10 @@
   <button *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada" mat-raised-button color="warn" (click)="anularReserva()">
     Anular
   </button>
+  <span *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada" style="margin-left: 20px"></span>
+  <button *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada" mat-raised-button color="primary" (click)="editarReserva()">
+    Editar
+  </button>
   <button *ngIf="reserva?.estado==reservaAnulada && !tieneReintegro" mat-raised-button color="accent" (click)="reintegrar()">
     Reintegro
   </button>

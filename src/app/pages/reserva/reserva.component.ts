@@ -21,6 +21,7 @@ export class ReservaComponent implements OnInit {
   public selectedCancha: Cancha;
   public selectedFecha: Date = new Date();
   public reservas: Reserva[];
+  public reservaSelect: Reserva = null; //Va null desde aca porq es nueva reserva
 
   constructor(private canchaService: CanchaService, private complejoSharedService: ComplejoSharedService,
               private reservaService: ReservaService, private datePipe: DatePipe, private complejoService: ComplejoService) {

@@ -43,7 +43,7 @@ export class CanchaComponent implements OnInit {
   }
 
   abrirDialog(cancha: Cancha): void {
-    let canchaSelect = cancha != null ? cancha : new Cancha(); //control para modo edicion o registro
+    let canchaSelect = cancha != null ? cancha : new Cancha(); //control para modo editar o registro
     let dialogRef = this.dialog.open(EdicionComponent, {
       width: '350px',
       disableClose: false,

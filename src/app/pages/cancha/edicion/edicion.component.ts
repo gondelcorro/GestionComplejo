@@ -27,7 +27,7 @@ export class EdicionComponent implements OnInit {
 
   ngOnInit(): void {
     this.cancha = new Cancha();
-    this.cancha.idCancha = this.canchaSelect.idCancha;// a la nueva instancia hay q setearle el id para q el back sepa q es una edicion
+    this.cancha.idCancha = this.canchaSelect.idCancha;// a la nueva instancia hay q setearle el id para q el back sepa q es una editar
     this.cancha.complejo = this.canchaSelect.complejo;
     this.cancha.numero = this.canchaSelect.numero;
     this.cancha.tipo = this.canchaSelect.tipo;

@@ -1,11 +1,11 @@
 <h2>Nueva Reserva</h2>
 <mat-divider></mat-divider>
-<br>
+<br *ngIf="!ocultarSelectJugador">
 <form [formGroup]="form">
-  <div class="jugador">
+  <div class="jugador" *ngIf="!ocultarSelectJugador">
     <mat-form-field style="width: 75%">
       <mat-label>Jugador</mat-label>
-      <input matInput placeholder="Ingrese un correo" formControlName="jugador" [matAutocomplete]="autoJug" required>
+      <input matInput placeholder="Ingrese un correo" formControlName="jugador" [matAutocomplete]="autoJug" required >
       <mat-autocomplete #autoJug="matAutocomplete" [displayWith]="fcionMostrarJugador"
                         (optionSelected)="updateJugadorSelect($event.option.value)">
         <mat-option *ngFor="let jugador of jugadoresFiltrados | async" [value]="jugador">
@@ -17,6 +17,11 @@
     <button mat-stroked-button (click)="irAFormRegistro()">
       <mat-icon>add</mat-icon>
     </button>
+  </div>
+  <div *ngIf="ocultarSelectJugador">
+    <mat-form-field style="width: 100%">
+      <input matInput  required readonly>{{data.reservaEdicion.jugador.nomYApe}}
+    </mat-form-field>
   </div>
   <div class="center">
     <strong>Fecha de reserva: </strong> <span class="example-spacer"></span>  {{fechaFormateada}}

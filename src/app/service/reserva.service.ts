@@ -2,9 +2,10 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Reserva} from '../model/reserva';
 import {environment} from '../../environments/environment';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {ReglasReservaError} from '../model/reglasReservaError';
 import {Complejo} from '../model/complejo';
+import {Cancha} from '../model/cancha';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,9 @@ import {Complejo} from '../model/complejo';
 export class ReservaService {
 
   reservasCambio = new Subject<Reserva[]>();
+  reservasEdicionCambio = new Subject<Reserva[]>();
+  canchaCambio = new Subject<Cancha>();
+  fechaCambio = new Subject<Date>();
 
   constructor(private httpClient: HttpClient) { }
 
@@ -52,12 +56,22 @@ export class ReservaService {
     return this.httpClient.post<number>(environment.url_gestionComplejos + `/reserva/obtenerImporte`, reserva);
   }
 
-  validarReglasReservaEdiAnu(reserva: Reserva){
-    return this.httpClient.post<ReglasReservaError>(environment.url_gestionComplejos + `/reserva/validarReglasEdiAnu`, reserva);
+  validarReglasAnulacion(reserva: Reserva){
+    return this.httpClient.post<ReglasReservaError>(environment.url_gestionComplejos + `/reserva/validarReglasAnulacion`, reserva);
   }
 
   anular(reserva: Reserva){
     return this.httpClient.put<number>(environment.url_gestionComplejos + `/reserva/anular`, reserva);
+  }
+
+  validarReglasEdicion(reserva: Reserva, reglaAvalidar: string){
+    return this.httpClient.post<ReglasReservaError>(environment.url_gestionComplejos + `/reserva/validarReglasEdicion`, reserva, {
+      params: new HttpParams().set("reglaAValidar", reglaAvalidar)
+    });
+  }
+
+  modificar(reserva: Reserva){
+    return this.httpClient.put<number>(environment.url_gestionComplejos + `/reserva/modificar`, reserva);
   }
 }
 
