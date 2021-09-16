@@ -62,21 +62,12 @@ export class BalanceDiarioComponent implements OnInit {
   }
 
   generarPdf() {
-/*    const fechaFormateada = this.datePipe.transform(this.fecha.value, 'yyyy-MM-dd');
-    this.produccionDiariaService.generarPdfProduccionDiaria(fechaFormateada).subscribe(dataReporte => {
+    const fechaFormateada = this.datePipe.transform(this.date.value, 'dd-MM-yyyy');
+    this.balanceService.generarPdfBalanceDiario(this.complejo.idComplejo, fechaFormateada).subscribe(dataReporte => {
       const file = new Blob([dataReporte], {type: "application/pdf"})
       const fileUrl = window.URL.createObjectURL(file);
       window.open(fileUrl);
-    });*/
-  }
-
-  downloadExcel() {
-/*    const fechaFormateada = this.datePipe.transform(this.fecha.value, 'yyyy-MM-dd');
-    this.produccionDiariaService.downloadExcelProduccionDiaria(fechaFormateada).subscribe(dataReporte => {
-      var file = new Blob([dataReporte], {type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"})
-      const fileUrl = window.URL.createObjectURL(file);
-      window.open(fileUrl);
-    });*/
+    });
   }
 
 }

@@ -1,0 +1,102 @@
+<h2 autofocus>Nuevo turno fijo</h2>
+<mat-divider></mat-divider>
+<br>
+<form [formGroup]="form">
+  <div fxLayout="row" style="margin-left: 10px">
+    <div fxFlex="100">
+      <div class="jugador">
+        <mat-form-field style="width: 75%">
+          <mat-label>Jugador</mat-label>
+          <input matInput placeholder="Ingrese un correo" formControlName="jugador" [matAutocomplete]="autoJug" required >
+          <mat-autocomplete #autoJug="matAutocomplete" [displayWith]="fcionMostrarJugador"
+                            (optionSelected)="updateJugadorSelect($event.option.value)">
+            <mat-option *ngFor="let jugador of jugadoresFiltrados | async" [value]="jugador">
+              {{jugador.correo}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <span class="example-spacer"></span>
+        <button mat-stroked-button (click)="irAFormRegistro()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <br>
+      <div class="center">
+        <mat-form-field style="width:300px;">
+          <mat-label>Cancha</mat-label>
+          <mat-select formControlName="cancha" required>
+            <mat-option *ngFor="let cancha of canchas" [value]="cancha">
+              {{"Nro. " + cancha.numero + " - " + " " + cancha.tipo}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <br>
+      <div class="center">
+        <strong>Hora de inicio: </strong> <span class="example-spacer"></span>
+        <mat-form-field>
+          <input matInput formControlName="horaInicio" required
+                 [ngxMatTimepicker]="pickerA"
+                 [format]="format"
+                 readonly/>
+          <mat-icon matSuffix (click)="pickerA.open()">
+            watch_later
+          </mat-icon>
+        </mat-form-field>
+        <ngx-mat-timepicker #pickerA
+                            [defaultTime]="horaPorDefecto"
+                            [minutesGap]="minutesGap">
+        </ngx-mat-timepicker>
+      </div>
+      <div class="center" style="margin-top: 5px; margin-bottom: 5px">
+        <strong>Hora de fin: </strong> <span class="example-spacer"></span>
+        <mat-form-field>
+          <input matInput formControlName="horaFin" required
+                 [ngxMatTimepicker]="pickerB"
+                 [format]="format"
+                 readonly/>
+          <mat-icon matSuffix (click)="pickerB.open()">
+            watch_later
+          </mat-icon>
+        </mat-form-field>
+        <ngx-mat-timepicker #pickerB
+                            [defaultTime]="horaPorDefecto"
+                            [minutesGap]="minutesGap">
+        </ngx-mat-timepicker>
+      </div>
+      <div class="center" style="margin-top: 15px !important;">
+        <strong>Fecha de alta: </strong> <span class="example-spacer"></span>
+        <mat-form-field>
+          <input matInput [matDatepicker]="pickerC" formControlName="fechaAlta" [min]="fechaAlta" [max]="maxDate" required>
+          <mat-datepicker-toggle matSuffix [for]="pickerC"></mat-datepicker-toggle>
+          <mat-datepicker #pickerC ></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <span style="width: 150px"></span>
+  <div fxFlex="100">
+    <p><strong>Día de la semana</strong></p>
+    <section class="example-section">
+      <mat-radio-group class="example-radio-group" formControlName="diaSelect">
+        <mat-radio-button class="example-radio-button" *ngFor="let dia of diasSemana" [value]="dia" required>
+          {{dia}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </section>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Num. turnos a asignar" formControlName="cantTurnos" [min]="1" [max]="8" required>
+    </mat-form-field>
+  </div>
+</form>
+<mat-divider></mat-divider>
+<br>
+<div align="end">
+  <button mat-raised-button color="basic" mat-dialog-close>
+    Cerrar
+  </button>
+  <span style="margin-left: 15px"></span>
+  <button mat-raised-button color="primary" (click)="reservarCancha()" [disabled]="!form.valid">
+    Crear turno
+  </button>
+</div>

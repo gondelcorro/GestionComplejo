@@ -117,12 +117,4 @@ export class BalanceSemanalComponent implements OnInit {
         });*/
   }
 
-  downloadExcel() {
-    /*    const fechaFormateada = this.datePipe.transform(this.fecha.value, 'yyyy-MM-dd');
-        this.produccionDiariaService.downloadExcelProduccionDiaria(fechaFormateada).subscribe(dataReporte => {
-          var file = new Blob([dataReporte], {type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"})
-          const fileUrl = window.URL.createObjectURL(file);
-          window.open(fileUrl);
-        });*/
-  }
 }

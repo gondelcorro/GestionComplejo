@@ -9,11 +9,11 @@ import { Routes, RouterModule } from '@angular/router';
 import {ErrorServerComponent} from './error/error-server/error-server.component';
 import {NotFoundComponent} from './error/not-found/not-found.component';
 import {ConfiguracionComponent} from './pages/configuracion/configuracion.component';
-import {JugadorComponent} from './pages/jugador/jugador.component';
 import {BalanceComponent} from './pages/balance/balance.component';
 import {BalanceDiarioComponent} from './pages/balance/opciones/balance-diario/balance-diario.component';
 import {BalanceSemanalComponent} from './pages/balance/opciones/balance-semanal/balance-semanal.component';
 import {BalanceMensualComponent} from './pages/balance/opciones/balance-mensual/balance-mensual.component';
+import {TurnoFijoComponent} from './pages/turno-fijo/turno-fijo.component';
 
 const routes: Routes = [
   //Cuando la ruta sea http://localhost:4500/# (definida en el login) q pase por el app-root para q tome de la url el token
@@ -33,7 +33,7 @@ const routes: Routes = [
         path: 'reserva', component: ReservaComponent
       },
       {
-        path: 'jugador', component: JugadorComponent
+        path: 'turno-fijo', component: TurnoFijoComponent
       },
       {
         path: 'configuracion', component: ConfiguracionComponent

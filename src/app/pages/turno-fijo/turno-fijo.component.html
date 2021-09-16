@@ -1,0 +1,82 @@
+<br>
+<div>
+  <h1><strong>Turnos fijos</strong></h1>
+</div>
+<mat-divider></mat-divider>
+<br>
+
+<div *ngIf="listaTurnos.data != 0">
+  <mat-form-field appearance="standard" style="width: 100%">
+    <mat-label>Búsqueda</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese el email del usuario" #input>
+  </mat-form-field>
+</div>
+
+<table mat-table [dataSource]="listaTurnos" class="mat-elevation-z8" *ngIf="listaTurnos.data != 0">
+  <ng-container matColumnDef="Estado">
+    <th mat-header-cell *matHeaderCellDef> Activo</th>
+    <!--<td [ngClass]="pago.reintegro ? 'reintegro-si' : 'reintegro-no'" mat-cell *matCellDef="let pago">{{pago.reintegro? "Si" : "No"}} </td>-->
+    <td  mat-cell *matCellDef="let turno"><mat-icon *ngIf="!turno.activo">close</mat-icon> <mat-icon *ngIf="turno.activo">done</mat-icon> </td>
+  </ng-container>
+  <ng-container matColumnDef="FechaAlta">
+    <th mat-header-cell *matHeaderCellDef> Fecha de alta</th>
+    <td mat-cell *matCellDef="let turno"> {{turno.fechaAlta}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Jugador">
+    <th mat-header-cell *matHeaderCellDef> Jugador</th>
+    <td mat-cell *matCellDef="let turno"> {{turno.jugador.nomYApe}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Cancha">
+    <th mat-header-cell *matHeaderCellDef> Cancha</th>
+    <td mat-cell *matCellDef="let turno"> {{turno.cancha.numero}}  - {{turno.cancha.tipo}}</td>
+  </ng-container>
+  <ng-container matColumnDef="DiaSemana">
+    <th mat-header-cell *matHeaderCellDef> Día semana</th>
+    <td mat-cell *matCellDef="let turno"> {{diaNumberToString(turno.diaSemana)}}</td>
+  </ng-container>
+  <ng-container matColumnDef="HoraIni">
+    <th mat-header-cell *matHeaderCellDef> Hora inicio</th>
+    <td mat-cell *matCellDef="let turno"> {{turno.horaInicio}} </td>
+  </ng-container>
+  <ng-container matColumnDef="HoraFin">
+    <th mat-header-cell *matHeaderCellDef> Hora fin</th>
+    <td mat-cell *matCellDef="let turno"> {{turno.horaFin}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Acciones">
+    <th mat-header-cell *matHeaderCellDef> Acciones</th>
+    <td mat-cell *matCellDef="let turno">
+      <button mat-button color="primary" style="cursor: pointer"> <!--(click)="nuevoTurno(pago)"-->
+        <mat-icon>request_quote</mat-icon>
+        Abonar fecha
+      </button>
+      <button mat-button color="basic" style="cursor: pointer"> <!--(click)="nuevoTurno(pago)"-->
+        <mat-icon>autorenew</mat-icon>
+        Renovar
+      </button>
+      <button mat-button color="accent" style="cursor: pointer"> <!--(click)="nuevoTurno(pago)"-->
+        <mat-icon>delete</mat-icon>
+        Anular
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <!-- Row shown when there is no matching data. -->
+  <!--<tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="7" *ngIf="input.value != '' ">Ningún registro coincide con el valor de búsqueda ingresado "{{input.value}}"</td>
+  </tr>-->
+</table>
+
+<div *ngIf="listaTurnos.data == 0">
+  <h2 style="margin-left: 20px">* Aún no tenés pagos registrados.</h2>
+</div>
+
+<div *ngIf="listaTurnos.data != 0">
+  <mat-paginator [pageSizeOptions]="[10, 20, 30]" [length]="cantidad" showFirstLastButtons ></mat-paginator> <!--(page)="mostrarMas($event)"-->
+</div>
+
+
+<button mat-fab color="warn" style="position: fixed; right: 3%; bottom: 5%" (click)="nuevoTurno()">
+  <mat-icon>add_box</mat-icon>
+</button>

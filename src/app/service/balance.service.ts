@@ -32,4 +32,12 @@ export class BalanceService {
       params: new HttpParams().set('fecha', fecha)
     });
   }
+
+  generarPdfBalanceDiario(idComplejo: number, fecha: string){
+    return this.http.get(environment.url_gestionComplejos + `/reporte/balanceDiario`, {
+      params: new HttpParams().set("idComplejo", idComplejo.toString())
+        .set('fecha', fecha),
+      responseType: 'blob'
+    });
+  }
 }

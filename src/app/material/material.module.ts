@@ -28,6 +28,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [],
@@ -60,7 +61,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatPaginatorModule,
     MatChipsModule,
     MatButtonToggleModule,
-    MatTabsModule
+    MatTabsModule,
+    MatRadioModule
   ],
     //AGREGAR EL EXPORTS TB PARA LOS COMP DE ANG MAT SI O SI
     //NO OLVIDAR REGISTRAR ESTE MODULO EN EL APPMODULE
@@ -92,7 +94,8 @@ import {MatTabsModule} from '@angular/material/tabs';
       MatPaginatorModule,
       MatChipsModule,
       MatButtonToggleModule,
-      MatTabsModule
+      MatTabsModule,
+      MatRadioModule
     ]
 })
 export class MaterialModule { }

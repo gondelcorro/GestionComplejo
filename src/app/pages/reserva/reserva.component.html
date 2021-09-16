@@ -10,7 +10,7 @@
   </mat-form-field>
 </div>
 
-<app-scheduler [complejo]="complejo" [cancha]="selectedCancha"
+<app-scheduler *ngIf="complejo != undefined" [complejo]="complejo" [cancha]="selectedCancha"
                [fecha]="selectedFecha" [reservas]="reservas"  [reservaEdicion]="reservaSelect">
 </app-scheduler>
 

@@ -1,0 +1,25 @@
+table {
+  width: 100%;
+}
+
+/*HEADER*/
+.mat-header-cell {
+  color: white;
+  background-color: #9e9e9e;
+  /*  background-color: #545b62;*/
+}
+
+th.mat-header-cell, td.mat-cell {
+  text-align: center;
+  border: 1px solid #CCC;
+  padding: 0 !important;
+}
+
+/*.mat-header-cell {
+  text-align: center;
+}*/
+
+.mat-column-Acciones {
+  flex: none;
+  width: 420px;
+}

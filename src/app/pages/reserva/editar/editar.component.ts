@@ -43,11 +43,27 @@ export class EditarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cargarCancha();
+    this.listarCanchas();
   }
 
-  public async cargarCancha(){
-    this.canchas = await this.canchaService.listarPorComplejoYHabilitada(this.selectedComplejo.idComplejo).toPromise();
+  public listarCanchas() {
+    this.canchaService.listarPorComplejo(this.selectedComplejo.idComplejo).subscribe(canchas => {
+      canchas.forEach( cancha => {
+        if(cancha.habilitada){
+          this.canchas.push(cancha);
+        }
+        else{
+          let dia = Number(cancha.fechaDeshabilitada.substring(0,2));
+          let mes = Number(cancha.fechaDeshabilitada.substring(3,5));
+          let anio = Number(cancha.fechaDeshabilitada.substring(6,10));
+          let fechaDeshabilitacion: Date = new Date(anio, mes-1, dia)
+          const fechaActual = new Date();
+          if(fechaActual.getTime() < fechaDeshabilitacion.getTime()){
+            this.canchas.push(cancha);
+          }
+        }
+      });
+    });
   }
 
   cancelar(){

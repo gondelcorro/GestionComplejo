@@ -164,16 +164,12 @@ export class SchedulerComponent implements OnInit {
       this.prevBtnDisabled = !this.isDateValid(endOfPeriod(this.dateAdapter, this.view, subPeriod(this.dateAdapter, this.view, this.viewDate, 1)));
       this.nextBtnDisabled = !this.isDateValid(startOfPeriod(this.dateAdapter, this.view, addPeriod(this.dateAdapter, this.view, this.viewDate, 1)));
     }
-
     if (this.viewDate < this.minDate) {
       this.changeDate(this.minDate);
     } else if (this.viewDate > this.maxDate) {
       this.changeDate(this.maxDate);
     }
-
-    if (this.isDateValid(this.viewDate)) {
-      this.cargarReservasXCambioSemana();
-    }
+    this.cargarReservasXCambioSemana();
   }
 
   private isDateValid(date: Date): boolean {
@@ -240,14 +236,15 @@ export class SchedulerComponent implements OnInit {
   }
 
   public cargarReservasXCambioSemana() {
-    const fechaIniFormateada = this.datePipe.transform(this.viewDate, 'dd-MM-yyyy');
-    let fechaFin = new Date();
+    this.fecha = new Date(this.viewDate);
+    const fechaIniFormateada = this.datePipe.transform(this.fecha, 'dd-MM-yyyy');
+    let fechaFin = this.fecha;
     fechaFin.setDate(fechaFin.getDate() + 6);
     const fechaFinFormateada = this.datePipe.transform(fechaFin, 'dd-MM-yyyy');
+    console.log(fechaIniFormateada);
     console.log(fechaFinFormateada);
     this.reservaService.verDisponibilidadxSemana(this.complejo.idComplejo, this.cancha.idCancha, fechaIniFormateada,
       fechaFinFormateada).subscribe(reservas => {
-      this.reservas = reservas;
       this.reservaService.reservasCambio.next(reservas);
       console.log(reservas);
     });

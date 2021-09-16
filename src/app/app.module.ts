@@ -36,7 +36,6 @@ import { NuevaComponent } from './pages/reserva/nueva/nueva.component';
 import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
 import { ProcesandoReservaComponent } from './pages/reserva/procesando-reserva/procesando-reserva.component';
 import { ConfiguracionComponent } from './pages/configuracion/configuracion.component';
-import { JugadorComponent } from './pages/jugador/jugador.component';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { DiasAtencionComponent } from './pages/configuracion/dias-atencion/dias-atencion.component';
 import { BalanceComponent } from './pages/balance/balance.component';
@@ -54,6 +53,8 @@ import { DeshabilitarComponent } from './pages/cancha/deshabilitar/deshabilitar.
 import { ConfirmaCambiosComponent } from './pages/configuracion/confirma-cambios/confirma-cambios.component';
 import {EditarComponent} from './pages/reserva/editar/editar.component';
 import { SchedulerEdicionComponent } from './pages/reserva/editar/scheduler-edicion/scheduler-edicion.component';
+import { TurnoFijoComponent } from './pages/turno-fijo/turno-fijo.component';
+import { NuevoTurnoComponent } from './pages/turno-fijo/nuevo-turno/nuevo-turno.component';
 // add this lines for lotties
 export function playerFactory() {
   return player;
@@ -76,7 +77,6 @@ export function playerFactory() {
     NuevaComponent,
     ProcesandoReservaComponent,
     ConfiguracionComponent,
-    JugadorComponent,
     DiasAtencionComponent,
     BalanceComponent,
     ImagenComponent,
@@ -89,7 +89,9 @@ export function playerFactory() {
     DeshabilitarComponent,
     ConfirmaCambiosComponent,
     EditarComponent,
-    SchedulerEdicionComponent
+    SchedulerEdicionComponent,
+    TurnoFijoComponent,
+    NuevoTurnoComponent
   ],
   imports: [
     BrowserModule,
