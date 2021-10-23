@@ -7,13 +7,14 @@ import {ComplejoService} from '../../../../service/complejo.service';
 import {ComplejoSharedService} from '../../../../service/complejo-shared.service';
 import {environment} from '../../../../../environments/environment';
 import {MatDatepicker, MatDatepickerInputEvent} from '@angular/material/datepicker';
-import { Moment } from 'moment';
+import {Moment} from 'moment';
 import {MAT_DATE_FORMATS} from '@angular/material/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {BalanceService} from '../../../../service/balance.service';
 import {DatePipe} from '@angular/common';
 
 import * as _moment from 'moment';
+
 const moment = _moment;
 
 export const MY_FORMATS = {
@@ -32,7 +33,7 @@ export const MY_FORMATS = {
   selector: 'app-balance-mensual',
   templateUrl: './balance-mensual.component.html',
   styleUrls: ['./balance-mensual.component.css'],
-  providers:[
+  providers: [
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
   ]
 })
@@ -55,8 +56,9 @@ export class BalanceMensualComponent implements OnInit {
   date = new FormControl(moment());
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private balanceService: BalanceService, private complejoService: ComplejoService, private  complejoSharedService: ComplejoSharedService,
-              private datePipe: DatePipe) { }
+  constructor(private balanceService: BalanceService, private complejoService: ComplejoService, private complejoSharedService: ComplejoSharedService,
+              private datePipe: DatePipe) {
+  }
 
   ngOnInit(): void {
     this.complejoService.obtenerComplejo(sessionStorage.getItem(environment.user)).subscribe(complejo => {
@@ -93,12 +95,12 @@ export class BalanceMensualComponent implements OnInit {
   }
 
   generarPdf() {
-    /*    const fechaFormateada = this.datePipe.transform(this.fecha.value, 'yyyy-MM-dd');
-        this.produccionDiariaService.generarPdfProduccionDiaria(fechaFormateada).subscribe(dataReporte => {
-          const file = new Blob([dataReporte], {type: "application/pdf"})
-          const fileUrl = window.URL.createObjectURL(file);
-          window.open(fileUrl);
-        });*/
+    const fechaFormateada = this.datePipe.transform(this.date.value, 'dd-MM-yyyy');
+    this.balanceService.generarPdfBalanceMensual(this.complejo.idComplejo, fechaFormateada).subscribe(dataReporte => {
+      const file = new Blob([dataReporte], {type: 'application/pdf'});
+      const fileUrl = window.URL.createObjectURL(file);
+      window.open(fileUrl);
+    });
   }
 
 }

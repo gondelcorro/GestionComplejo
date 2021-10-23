@@ -3,10 +3,31 @@
   <h1><strong>Pagos</strong></h1>
 </div>
 
+<!--<mat-tab-group>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">event_available</mat-icon>
+      <span style="margin-left: 10px">
+      Turnos libres
+      </span>
+    </ng-template>
+    Content 1
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">event</mat-icon>
+      <span style="margin-left: 10px">
+      Turnos Fijos
+      </span>
+    </ng-template>
+    Content 2
+  </mat-tab>
+</mat-tab-group>-->
+
 <div *ngIf="listaPago.data != 0">
   <mat-form-field appearance="standard" style="width: 100%">
     <mat-label>Búsqueda</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese un número de pago, código de reserva o fecha" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese un número de pago o código de reserva" #input>
   </mat-form-field>
 </div>
 

@@ -2,6 +2,7 @@ import {Complejo} from './complejo';
 import {Cancha} from './cancha';
 import {Jugador} from './jugador';
 import {EstadoReserva} from './estadoReserva';
+import {TurnoFijo} from './TurnoFijo';
 
 export class Reserva{
   idReserva: number;
@@ -13,5 +14,7 @@ export class Reserva{
   cancha: Cancha;
   jugador: Jugador;
   automatica: boolean;
+  esTurnoFijo: boolean;
+  turnoFijo: TurnoFijo;
   estado: EstadoReserva;
 }

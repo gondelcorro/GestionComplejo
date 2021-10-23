@@ -11,6 +11,7 @@ import {ReglasReservaError} from '../model/reglasReservaError';
 export class TurnoFijoService {
 
   public turnoFijoListCambio = new Subject<TurnoFijo[]>();
+  public turnoFijoCambio = new Subject<TurnoFijo>();
 
   constructor(private httpClient: HttpClient) {
 
@@ -22,5 +23,9 @@ export class TurnoFijoService {
 
   registrar(turno: TurnoFijo){
     return this.httpClient.post<ReglasReservaError>(environment.url_gestionComplejos + `/turno-fijo/registrar`, turno);
+  }
+
+  renovar(turnoFijo: TurnoFijo){
+    return this.httpClient.post<ReglasReservaError>(environment.url_gestionComplejos + `/turno-fijo/renovar`, turnoFijo);
   }
 }

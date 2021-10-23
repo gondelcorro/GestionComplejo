@@ -1,6 +1,7 @@
 import {Complejo} from './complejo';
 import {Cancha} from './cancha';
 import {Jugador} from './jugador';
+import {Reserva} from './reserva';
 
 export class TurnoFijo{
   idTurnoFijo: number;
@@ -12,5 +13,7 @@ export class TurnoFijo{
   horaFin: string;
   diaSemana: number;
   cantDiasAsignados: number;
+  cantRenovaciones: number;
+  reservas: Reserva[];
   activo: boolean;
 }

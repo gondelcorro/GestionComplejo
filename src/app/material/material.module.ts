@@ -29,6 +29,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [],
@@ -62,7 +63,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatChipsModule,
     MatButtonToggleModule,
     MatTabsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTooltipModule
   ],
     //AGREGAR EL EXPORTS TB PARA LOS COMP DE ANG MAT SI O SI
     //NO OLVIDAR REGISTRAR ESTE MODULO EN EL APPMODULE
@@ -95,7 +97,8 @@ import {MatRadioModule} from '@angular/material/radio';
       MatChipsModule,
       MatButtonToggleModule,
       MatTabsModule,
-      MatRadioModule
+      MatRadioModule,
+      MatTooltipModule
     ]
 })
 export class MaterialModule { }

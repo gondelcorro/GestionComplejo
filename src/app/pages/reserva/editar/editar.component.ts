@@ -16,7 +16,7 @@ import {CanchaService} from '../../../service/cancha.service';
 export class EditarComponent implements OnInit {
 
   public selectedComplejo: Complejo;
-  public canchas: Cancha[];
+  public canchas: Cancha[] = [];
   public selectedCancha: Cancha;
   public selectedFecha: Date;
   public minDate: Date;

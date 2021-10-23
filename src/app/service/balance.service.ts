@@ -40,4 +40,12 @@ export class BalanceService {
       responseType: 'blob'
     });
   }
+
+  generarPdfBalanceMensual(idComplejo: number, fecha: string){
+    return this.http.get(environment.url_gestionComplejos + `/reporte/balanceMensual`, {
+      params: new HttpParams().set("idComplejo", idComplejo.toString())
+        .set('fecha', fecha),
+      responseType: 'blob'
+    });
+  }
 }

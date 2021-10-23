@@ -8,7 +8,7 @@
 <div *ngIf="listaTurnos.data != 0">
   <mat-form-field appearance="standard" style="width: 100%">
     <mat-label>Búsqueda</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese el email del usuario" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese el nombre del jugador" #input>
   </mat-form-field>
 </div>
 
@@ -16,11 +16,10 @@
   <ng-container matColumnDef="Estado">
     <th mat-header-cell *matHeaderCellDef> Activo</th>
     <!--<td [ngClass]="pago.reintegro ? 'reintegro-si' : 'reintegro-no'" mat-cell *matCellDef="let pago">{{pago.reintegro? "Si" : "No"}} </td>-->
-    <td  mat-cell *matCellDef="let turno"><mat-icon *ngIf="!turno.activo">close</mat-icon> <mat-icon *ngIf="turno.activo">done</mat-icon> </td>
-  </ng-container>
-  <ng-container matColumnDef="FechaAlta">
-    <th mat-header-cell *matHeaderCellDef> Fecha de alta</th>
-    <td mat-cell *matCellDef="let turno"> {{turno.fechaAlta}} </td>
+    <td mat-cell *matCellDef="let turno">
+      <mat-icon *ngIf="!turno.activo" [ngStyle]="{'color': 'red'}">close</mat-icon>
+      <mat-icon *ngIf="turno.activo" [ngStyle]="{'color': 'green'}">done</mat-icon>
+    </td>
   </ng-container>
   <ng-container matColumnDef="Jugador">
     <th mat-header-cell *matHeaderCellDef> Jugador</th>
@@ -45,17 +44,24 @@
   <ng-container matColumnDef="Acciones">
     <th mat-header-cell *matHeaderCellDef> Acciones</th>
     <td mat-cell *matCellDef="let turno">
-      <button mat-button color="primary" style="cursor: pointer"> <!--(click)="nuevoTurno(pago)"-->
-        <mat-icon>request_quote</mat-icon>
-        Abonar fecha
+      <button mat-button color="primary" style="cursor: pointer"
+              (click)="selectTurnoFijo(turno); sidenavReservas.toggle();">
+        <mat-icon>search</mat-icon>
+        Ver detalle
       </button>
-      <button mat-button color="basic" style="cursor: pointer"> <!--(click)="nuevoTurno(pago)"-->
-        <mat-icon>autorenew</mat-icon>
+      <button mat-button color="basic" style="cursor: pointer" (click)="renovar(turno)" [disabled]="!habilitarRenovacion(turno)">
+        <mat-icon matTooltip="La renovación se habilitará 10 días antes de la fecha de la última reserva creada para el turno fijo"
+                  matTooltipPosition="below"
+                  matTooltipHideDelay="100">autorenew</mat-icon>
         Renovar
       </button>
-      <button mat-button color="accent" style="cursor: pointer"> <!--(click)="nuevoTurno(pago)"-->
-        <mat-icon>delete</mat-icon>
-        Anular
+      <button *ngIf="turno.activo" mat-button color="accent" style="cursor: pointer" (click)="anular(turno)" [disabled]="!turno.activo">
+        <mat-icon>toggle_off</mat-icon>
+        Desactivar
+      </button>
+      <button *ngIf="!turno.activo" mat-button color="warn" style="cursor: pointer" (click)="activar(turno)" [disabled]="turno.activo">
+        <mat-icon>toggle_on</mat-icon>
+        Activar
       </button>
     </td>
   </ng-container>
@@ -73,10 +79,20 @@
 </div>
 
 <div *ngIf="listaTurnos.data != 0">
-  <mat-paginator [pageSizeOptions]="[10, 20, 30]" [length]="cantidad" showFirstLastButtons ></mat-paginator> <!--(page)="mostrarMas($event)"-->
+  <mat-paginator [pageSizeOptions]="[10, 20, 30]" [length]="cantidad" showFirstLastButtons></mat-paginator>
+  <!--(page)="mostrarMas($event)"-->
 </div>
-
 
 <button mat-fab color="warn" style="position: fixed; right: 3%; bottom: 5%" (click)="nuevoTurno()">
   <mat-icon>add_box</mat-icon>
 </button>
+
+<mat-sidenav #sidenavReservas mode="side" position="end" hidden style="width: 340px;">
+  <button mat-icon-button style="top: 15px; left: 85%;" (click)="sidenavReservas.toggle()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <br/><br/>
+  <div *ngIf="turnoFijoSelected!=null">
+    <reservas-turno [turnoFijo]="turnoFijoSelected"></reservas-turno>
+  </div>
+</mat-sidenav>

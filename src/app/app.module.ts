@@ -55,6 +55,7 @@ import {EditarComponent} from './pages/reserva/editar/editar.component';
 import { SchedulerEdicionComponent } from './pages/reserva/editar/scheduler-edicion/scheduler-edicion.component';
 import { TurnoFijoComponent } from './pages/turno-fijo/turno-fijo.component';
 import { NuevoTurnoComponent } from './pages/turno-fijo/nuevo-turno/nuevo-turno.component';
+import { ReservasTurnoComponent } from './pages/turno-fijo/reservas-turno/reservas-turno.component';
 // add this lines for lotties
 export function playerFactory() {
   return player;
@@ -91,7 +92,8 @@ export function playerFactory() {
     EditarComponent,
     SchedulerEdicionComponent,
     TurnoFijoComponent,
-    NuevoTurnoComponent
+    NuevoTurnoComponent,
+    ReservasTurnoComponent
   ],
   imports: [
     BrowserModule,

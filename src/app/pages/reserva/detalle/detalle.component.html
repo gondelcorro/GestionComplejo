@@ -13,23 +13,42 @@
   <p><span style="font-weight: bold">Hora inicio: </span>{{reserva?.horaInicio}}</p>
   <p><span style="font-weight: bold">Hora fin: </span>{{reserva?.horaFin}}</p>
   <p><span style="font-weight: bold">Estado: </span>{{reserva?.estado}}</p>
-  <mat-hint *ngIf="reserva?.estado==reservaAnulada && tieneReintegro" style="color: #AB2A3E; text-align: justify">* La reserva tiene un reintegro abonado.</mat-hint>
+  <mat-hint *ngIf="reserva?.estado==reservaAnulada && tieneReintegro" style="color: #AB2A3E; text-align: justify">* La
+    reserva tiene un reintegro abonado.
+  </mat-hint>
+  <mat-hint *ngIf="reserva?.esTurnoFijo" style="color: #1F8A4D; text-align: justify">* La reserva corresponde a un turno
+    fijo.
+  </mat-hint>
 </div>
 <mat-divider *ngIf="reserva?.estado!=reservaFinalizada"></mat-divider>
 <br>
 <div align="end">
-  <button *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada" mat-raised-button color="warn" (click)="anularReserva()">
+  <button *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada && !reserva.esTurnoFijo" mat-raised-button color="warn"
+          (click)="anularReserva()">
     Anular
   </button>
-  <span *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada" style="margin-left: 20px"></span>
-  <button *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada" mat-raised-button color="primary" (click)="editarReserva()">
+  <span *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada && !reserva.esTurnoFijo" style="margin-left: 20px"></span>
+  <button *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada && !reserva.esTurnoFijo" mat-raised-button color="primary"
+          (click)="editarReserva()">
     Editar
   </button>
-  <button *ngIf="reserva?.estado==reservaAnulada && !tieneReintegro" mat-raised-button color="accent" (click)="reintegrar()">
+  <button *ngIf="reserva?.estado==reservaAnulada && !tieneReintegro" mat-raised-button color="accent"
+          (click)="reintegrar()">
     Reintegro
   </button>
   <span style="margin-left: 15px" *ngIf="reserva?.estado==reservaAnulada"></span>
-  <button *ngIf="reserva?.estado==reservaAnulada && !esReservaPasada" mat-raised-button color="primary" (click)="nuevaReserva()">
+  <button *ngIf="reserva?.estado==reservaAnulada && !esReservaPasada" mat-raised-button color="primary"
+          (click)="nuevaReserva()">
     Nueva reserva
+  </button>
+  <!--PARA TURNOS FIJOS-->
+  <button *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada && reserva.esTurnoFijo" mat-stroked-button color="warn"
+          (click)="anularReserva()">
+    Cancelar
+  </button>
+  <span *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada && reserva.esTurnoFijo" style="margin-left: 20px"></span>
+  <button *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada && reserva.esTurnoFijo" mat-stroked-button color="primary"
+          (click)="editarReserva()">
+    Abonar
   </button>
 </div>

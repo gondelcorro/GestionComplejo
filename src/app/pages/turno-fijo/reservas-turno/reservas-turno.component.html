@@ -1,0 +1,44 @@
+<div style="margin: 15px 20px 20px 20px">
+  <h4><span class="estilo-detalle">Fecha de alta: </span>{{turnoFijo.fechaAlta}}</h4>
+  <h4><span class="estilo-detalle">Fecha de vto.: </span>{{turnoFijo.fechaAlta}}</h4>
+  <h4><span class="estilo-detalle">Renovaciones: </span>{{turnoFijo.cantRenovaciones}}</h4>
+  <mat-list style="margin-left: 15px">
+    <div mat-subheader>
+      <mat-icon mat-list-icon>today</mat-icon>
+      <span style="margin-right: 10px"></span>
+      Reservas confirmadas
+    </div>
+    <mat-list-item *ngFor="let confirmada of reservasConfirmadas">
+      <div mat-line style="margin-left: 35px">{{confirmada.fecha}}
+        <span style="margin-left: 20px"></span>
+        <button mat-icon-button #tooltip="matTooltip"
+                [ngStyle]="{'color': 'green'}"
+                matTooltip="Abonar turno"
+                matTooltipPosition="below"
+                matTooltipHideDelay="100"
+                class="example-button">
+          <mat-icon>request_quote</mat-icon>
+        </button>
+        <span style="margin-left: 15px"></span>
+        <button mat-icon-button #tooltip1="matTooltip"
+                color="warn"
+                matTooltip="Cancelar turno"
+                matTooltipPosition="below"
+                matTooltipHideDelay="100"
+                class="example-button">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+     <!-- <div mat-line>(impaga)</div>-->
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <div mat-subheader>
+      <mat-icon mat-list-icon [ngStyle]="{'color': 'orange'}">event_available</mat-icon>
+      <span style="margin-right: 10px"></span>
+      Reservas finalizadas
+    </div>
+    <mat-list-item *ngFor="let finalizada of reservasFinalizadas">
+      <div mat-line style="margin-left: 30px">{{finalizada.fecha}}</div>
+    </mat-list-item>
+  </mat-list>
+</div>
