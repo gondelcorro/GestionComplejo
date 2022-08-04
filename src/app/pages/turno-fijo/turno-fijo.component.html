@@ -55,7 +55,7 @@
                   matTooltipHideDelay="100">autorenew</mat-icon>
         Renovar
       </button>
-      <button *ngIf="turno.activo" mat-button color="accent" style="cursor: pointer" (click)="anular(turno)" [disabled]="!turno.activo">
+      <button *ngIf="turno.activo" mat-button color="accent" style="cursor: pointer" (click)="desactivar(turno)" [disabled]="!turno.activo">
         <mat-icon>toggle_off</mat-icon>
         Desactivar
       </button>
@@ -87,7 +87,7 @@
   <mat-icon>add_box</mat-icon>
 </button>
 
-<mat-sidenav #sidenavReservas mode="side" position="end" hidden style="width: 340px;">
+<mat-sidenav #sidenavReservas mode="side" position="end" hidden style="width: 350px;">
   <button mat-icon-button style="top: 15px; left: 85%;" (click)="sidenavReservas.toggle()">
     <mat-icon>close</mat-icon>
   </button>

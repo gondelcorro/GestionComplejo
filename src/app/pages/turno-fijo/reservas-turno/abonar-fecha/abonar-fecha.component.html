@@ -1,0 +1,14 @@
+<h2>Confirmar pago de fecha</h2>
+<mat-divider></mat-divider>
+<br>
+<h3>
+  <strong>Importe a pagar:</strong>
+  {{importeAPagar | currency: 'ARS'}}
+</h3>
+<br>
+<div align="end">
+  <button mat-button mat-raised-button color="basic" mat-dialog-close>Cancelar</button>
+  <span style="margin-right: 15px"></span>
+  <button mat-button mat-raised-button color="primary" (click)="confirmarAbonarFecha()">Aceptar</button>
+</div>
+

@@ -17,27 +17,27 @@ export class CanchaService {
   constructor(private http : HttpClient, private router: Router) { }
 
   registrar(cancha : Cancha){
-    return this.http.post<number>(environment.url_gestionComplejos + `/cancha/registrar`, cancha/*, {
+    return this.http.post<number>(environment.url_sejuegasgo + `/cancha/registrar`, cancha/*, {
       headers: new HttpHeaders().set('Authorization', `bearer ` + this.access_token).set('Content-Type', 'application/json')
     }*/);
   }
 
   editar(cancha : Cancha){
-    return this.http.put<number>(environment.url_gestionComplejos + `/cancha/modificar`, cancha/*, {
+    return this.http.put<number>(environment.url_sejuegasgo + `/cancha/modificar`, cancha/*, {
       headers: new HttpHeaders().set('Authorization', `bearer ` + this.access_token).set('Content-Type', 'application/json')
     }*/);
   }
 
   listarPorComplejo(idComplejo: number){
-    return this.http.get<Cancha[]>(environment.url_gestionComplejos + `/cancha/listar/${idComplejo}`);
+    return this.http.get<Cancha[]>(environment.url_sejuegasgo + `/cancha/listar/${idComplejo}`);
   }
 
   deshabilitarCancha(cancha : Cancha, fecha: string){
-    return this.http.post<number>(environment.url_gestionComplejos + `/cancha/deshabilitar/${fecha}`, cancha);
+    return this.http.post<number>(environment.url_sejuegasgo + `/cancha/deshabilitar/${fecha}`, cancha);
   }
 
   listarPorComplejoYHabilitada(idComplejo: number){
-    return this.http.get<Cancha[]>(environment.url_gestionComplejos + `/cancha/listarHabilitadas/${idComplejo}`);
+    return this.http.get<Cancha[]>(environment.url_sejuegasgo + `/cancha/listarHabilitadas/${idComplejo}`);
   }
 
 }

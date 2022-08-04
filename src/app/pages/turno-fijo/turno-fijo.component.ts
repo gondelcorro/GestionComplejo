@@ -98,6 +98,7 @@ export class TurnoFijoComponent implements OnInit, AfterViewInit {
 
   selectTurnoFijo(turno: TurnoFijo) {
     this.turnoFijoSelected = turno;
+    //para actualizar el detalle del turno fijo cuando se selecciona otro
     this.turnoFijoService.turnoFijoCambio.next(turno);
   }
 
@@ -133,11 +134,34 @@ export class TurnoFijoComponent implements OnInit, AfterViewInit {
     });
   }
 
-  public anular(turno: TurnoFijo){
-
+  public activar(turno: TurnoFijo){
+    this.turnoFijoService.activar(turno).subscribe(resp =>{
+      if(resp){
+        this.listar(turno.complejo.idComplejo);
+        this.snackbar.open("El turno fijo se activó correctamente", 'INFO', {
+          duration: 5000
+        })
+      }else{
+        this.snackbar.open("No se puede activar el turno fijo porque tiene asociadas reservas finalizadas impagas"
+          , 'ERROR', {
+          duration: 5000
+        })
+      }
+    });
   }
 
-  public activar(turno: TurnoFijo){
-
+  public desactivar(turno: TurnoFijo){
+    this.turnoFijoService.desactivar(turno).subscribe(resp =>{
+      if(resp){
+        this.listar(turno.complejo.idComplejo);
+        this.snackbar.open("El turno fijo se desactivó correctamente", 'INFO', {
+          duration: 5000
+        })
+      }else{
+        this.snackbar.open("No se puede desactivar el turno fijo", 'ERROR', {
+          duration: 5000
+        })
+      }
+    });
   }
 }

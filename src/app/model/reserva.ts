@@ -15,6 +15,5 @@ export class Reserva{
   jugador: Jugador;
   automatica: boolean;
   esTurnoFijo: boolean;
-  turnoFijo: TurnoFijo;
   estado: EstadoReserva;
 }

@@ -134,17 +134,25 @@ export class NuevoTurnoComponent implements OnInit {
         turnoFijo.cantDiasAsignados = this.form.get('cantTurnos').value;
         turnoFijo.activo = true;
         turnoFijo.fechaAlta = this.datePipe.transform(this.form.controls.fechaAlta.value, 'dd-MM-yyyy');
-        this.turnoFijoService.registrar(turnoFijo).subscribe(resp => {
-          if (resp.codigo == 99) {
-            this.dialogRefNueva.close();
-            this.snackBar.open('Turno fijo registrado correctamente', 'Error', {
-              duration: 5000
+        this.turnoFijoService.verificarDisponibilidadTF(turnoFijo).subscribe(disponible =>{
+          if(disponible){
+            this.turnoFijoService.registrar(turnoFijo).subscribe(resp => {
+              if (resp.codigo == 99) {
+                this.dialogRefNueva.close();
+                this.snackBar.open('Turno fijo registrado correctamente', 'Error', {
+                  duration: 5000
+                });
+                this.turnoFijoService.listarPorComplejo(this.complejo.idComplejo).subscribe(turnos =>{
+                  this.turnoFijoService.turnoFijoListCambio.next(turnos);
+                });
+              } else {
+                this.snackBar.open(resp.descripcion, 'Error', {
+                  duration: 5000
+                });
+              }
             });
-            this.turnoFijoService.listarPorComplejo(this.complejo.idComplejo).subscribe(turnos =>{
-              this.turnoFijoService.turnoFijoListCambio.next(turnos);
-            });
-          } else {
-            this.snackBar.open(resp.descripcion, 'Error', {
+          }else{
+            this.snackBar.open('El turno fijo seleccionado no está disponible', 'Error', {
               duration: 5000
             });
           }

@@ -27,6 +27,9 @@ export class ConfirmaCambiosComponent implements OnInit {
       this.data.complejo.cierre = this.datePipe.transform(cierreAsDate, 'HH:mm');
       this.data.complejo.diurnoFin = this.datePipe.transform(finAsDate, 'HH:mm');
     }
+    if(!this.data.complejo.cierreTemporal){
+      this.data.complejo.cierreTempHasta = null;
+    }
     this.complejoService.modificarComplejo(this.data.complejo).subscribe(complejo => {
       this._guardarArchivo(complejo.idComplejo);
       this.complejoService.complejoCambio.next(complejo);

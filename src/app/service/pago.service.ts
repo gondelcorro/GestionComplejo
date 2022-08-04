@@ -16,40 +16,44 @@ export class PagoService {
   constructor(private http: HttpClient) { }
 
   registrar(pago : Pago){
-    return this.http.post<number>(environment.url_gestionComplejos + `/pago/registrar`, pago, {
+    return this.http.post<number>(environment.url_sejuegasgo + `/pago/registrar`, pago, {
       headers: new HttpHeaders().set('Authorization', `bearer ` + this.access_token).set('Content-Type', 'application/json')
     });
   }
 
   editar(pago : Pago){
-    return this.http.put<number>(environment.url_gestionComplejos + `/pago/modificar`, pago);/*, {
+    return this.http.put<number>(environment.url_sejuegasgo + `/pago/modificar`, pago);/*, {
       headers: new HttpHeaders().set('Authorization', `bearer ` + this.access_token).set('Content-Type', 'application/json')
     });*/
   }
 
-  listarPorComplejo(idComplejo: number){
-    return this.http.get<Pago[]>(environment.url_gestionComplejos + `/pago/listarPorComplejo/${idComplejo}`);
+  listarPorComplejoTL(idComplejo: number){
+    return this.http.get<Pago[]>(environment.url_sejuegasgo + `/pago/listarPorComplejoTL/${idComplejo}`);
+  }
+
+  listarPorComplejoTF(idComplejo: number){
+    return this.http.get<Pago[]>(environment.url_sejuegasgo + `/pago/listarPorComplejoTF/${idComplejo}`);
   }
 
   listarPorComplejoPageable(idComplejo: number, p: number, s: number){
-    return this.http.get<Pago[]>(environment.url_gestionComplejos + `/pago/listarPorComplejoPageable/${idComplejo}?page=${p}&size=${s}`/*, {
+    return this.http.get<Pago[]>(environment.url_sejuegasgo + `/pago/listarPorComplejoPageable/${idComplejo}?page=${p}&size=${s}`/*, {
       params: new HttpParams().set('page', 'p')
         .set('size', 's')
     }*/);
   }
 
   detalleReserva(codigo: string){
-    return this.http.get<Reserva>(environment.url_gestionComplejos + `/pago/detalleReserva/${codigo}`);/*,  {
+    return this.http.get<Reserva>(environment.url_sejuegasgo + `/pago/detalleReserva/${codigo}`);/*,  {
       headers: new HttpHeaders().set('Authorization', `bearer ` + this.access_token).set('Content-Type', 'application/json')
     });*/
   }
 
   registrarReintegro(reserva: Reserva){
-    return this.http.post<number>(environment.url_gestionComplejos + `/pago/registrarReintegro`, reserva);
+    return this.http.post<number>(environment.url_sejuegasgo + `/pago/registrarReintegro`, reserva);
   }
 
   public obtenerPorReserva(codigoReserva: string){
-    return this.http.get<Pago[]>(environment.url_gestionComplejos + `/pago/obtener/${codigoReserva}`);
+    return this.http.get<Pago[]>(environment.url_sejuegasgo + `/pago/obtener/${codigoReserva}`);
   }
 
 }

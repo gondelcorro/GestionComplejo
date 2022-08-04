@@ -43,7 +43,9 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(this._addHeaders(request))
       .pipe(map(event => {
         if (event instanceof HttpResponse) {
-          this.loaderService.hide();
+          setTimeout(()=>{
+            this.loaderService.hide();
+            }, 5);
         }
         return event;
       }))

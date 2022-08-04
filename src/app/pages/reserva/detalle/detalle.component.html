@@ -44,11 +44,11 @@
   <!--PARA TURNOS FIJOS-->
   <button *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada && reserva.esTurnoFijo" mat-stroked-button color="warn"
           (click)="anularReserva()">
-    Cancelar
+    Anular
   </button>
   <span *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada && reserva.esTurnoFijo" style="margin-left: 20px"></span>
   <button *ngIf="reserva?.estado==reservaConfirmada && !esReservaPasada && reserva.esTurnoFijo" mat-stroked-button color="primary"
-          (click)="editarReserva()">
+          (click)="abonarFecha()">
     Abonar
   </button>
 </div>

@@ -13,19 +13,17 @@ import {DatePipe} from '@angular/common';
 })
 export class AnulacionComponent implements OnInit {
 
-  reservaAAnular: Reserva;
 
-  constructor(@Inject(MAT_DIALOG_DATA) private reservaSelected: Reserva, private reservaService: ReservaService,
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private reservaService: ReservaService,
               private snackbar: MatSnackBar, private dialogRef: MatDialogRef<ReservaComponent>, private datePipe: DatePipe) {
-    this.reservaAAnular = this.reservaSelected;
-  }
 
+  }
 
   ngOnInit(): void {
   }
 
   confirmarAnulacion() {
-    this.reservaService.anular(this.reservaAAnular).subscribe(anulacion => {
+    this.reservaService.anular(this.data.reserva).subscribe(anulacion => {
       if (anulacion == 1) {
         this.dialogRef.close();
         let fechaInicio = new Date();
@@ -33,7 +31,7 @@ export class AnulacionComponent implements OnInit {
         let fechaFin = new Date();
         fechaFin.setDate(fechaFin.getDate()+6);
         const fechaFinFormateada = this.datePipe.transform(fechaFin, 'dd-MM-yyyy');
-        this.reservaService.verDisponibilidadxSemana(this.reservaAAnular.complejo.idComplejo, this.reservaAAnular.cancha.idCancha,
+        this.reservaService.verDisponibilidadxSemana(this.data.reserva.complejo.idComplejo, this.data.reserva.cancha.idCancha,
           fechaInicioFormateada, fechaFinFormateada).subscribe(reservas => {
           this.reservaService.reservasCambio.next(reservas);
           this.snackbar.open('Se anuló correctamente su reserva', 'Aviso', {duration: 5000});

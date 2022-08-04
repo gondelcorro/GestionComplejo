@@ -11,6 +11,6 @@ export class JugadorService {
   constructor(private httpClient: HttpClient) { }
 
   listar(){
-    return this.httpClient.get<Jugador[]>(environment.url_gestionComplejos + '/jugador/listar');
+    return this.httpClient.get<Jugador[]>(environment.url_sejuegasgo + '/jugador/listar');
   }
 }

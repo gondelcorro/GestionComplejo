@@ -9,6 +9,7 @@ export class TurnoFijo{
   cancha: Cancha;
   jugador: Jugador;
   fechaAlta: string;
+  fechaVencimiento: string;
   horaInicio: string;
   horaFin: string;
   diaSemana: number;

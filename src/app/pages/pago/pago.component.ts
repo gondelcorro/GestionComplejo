@@ -1,65 +1,19 @@
-import { ComplejoSharedService } from './../../service/complejo-shared.service';
-import { PagoService } from './../../service/pago.service';
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import {Pago} from '../../model/pago';
-import {MatDialog} from '@angular/material/dialog';
-import {DetalleReservaComponent} from './detalle-reserva/detalle-reserva.component';
-import {MatPaginator} from '@angular/material/paginator';
-import {environment} from '../../../environments/environment';
-import {ComplejoService} from '../../service/complejo.service';
+import {Component, OnInit, } from '@angular/core';
+
 
 @Component({
   selector: 'app-pago',
   templateUrl: './pago.component.html',
   styleUrls: ['./pago.component.css']
 })
-export class PagoComponent implements OnInit, AfterViewInit {
+export class PagoComponent implements OnInit{
 
-  listaPago: any; //Uso tipo any para poder instanciarlo como MatTableDataSource y usar el filtro, sino puede ser tipo lista  listaAlu: Alumno[] = [];
-  displayedColumns: string[] = ['Reintegro', 'NumPago', 'Estado', 'MedioPago', 'Importe', 'Fecha', 'Acciones'];
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  cantidad: number;
-
-  constructor(private pagoService: PagoService, private complejoService: ComplejoService, private complejoSharedService: ComplejoSharedService,
-              private dialog: MatDialog) {
+  constructor() {
 
   }
 
   ngOnInit(): void {
-    this.complejoService.obtenerComplejo(sessionStorage.getItem(environment.user)).subscribe(complejo => {
-      this.complejoSharedService.setComplejo(complejo);
-      this.listar(complejo.idComplejo);
-    });
-  }
 
-  ngAfterViewInit() {
-    this.listaPago.paginator = this.paginator;
-    this.listaPago.sort = this.sort;
-  }
-
-  listar(idComplejo: number) {
-    this.pagoService.listarPorComplejo(idComplejo).subscribe(pagos => {
-      this.listaPago = new MatTableDataSource(pagos);
-    })
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.listaPago.filter = filterValue.trim().toLowerCase();
-    if (this.listaPago.paginator) {
-      this.listaPago.paginator.firstPage();
-    }
-  }
-
-  verReserva(pago: Pago){
-    let dialogRef = this.dialog.open(DetalleReservaComponent, {
-      width: '350px',
-      disableClose: true,
-      data: pago
-    });
   }
 
 }

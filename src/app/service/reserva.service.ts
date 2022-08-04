@@ -20,7 +20,7 @@ export class ReservaService {
   constructor(private httpClient: HttpClient) { }
 
   public verDisponibilidad(idComplejo: number, idCancha: number, fecha: string) {
-    return this.httpClient.get<Reserva[]>(environment.url_gestionComplejos + `/reserva/verDisponibilidad`, {
+    return this.httpClient.get<Reserva[]>(environment.url_sejuegasgo + `/reserva/verDisponibilidad`, {
       params: new HttpParams().set('idComplejo', idComplejo.toString())
         .set('idCancha', idCancha.toString())
         .set('fecha', fecha)
@@ -28,7 +28,7 @@ export class ReservaService {
   }
 
   public verDisponibilidadxSemana(idComplejo: number, idCancha: number, fechaIni: string, fechaFin: string) {
-    return this.httpClient.get<Reserva[]>(environment.url_gestionComplejos + `/reserva/verDisponibilidadSemanal`, {
+    return this.httpClient.get<Reserva[]>(environment.url_sejuegasgo + `/reserva/verDisponibilidadSemanal`, {
       params: new HttpParams().set('idComplejo', idComplejo.toString())
         .set('idCancha', idCancha.toString())
         .set('fechaIni', fechaIni)
@@ -37,41 +37,41 @@ export class ReservaService {
   }
 
   validarReglasReservaCreacion(reserva: Reserva){
-    return this.httpClient.post<ReglasReservaError>(environment.url_gestionComplejos + `/reserva/validarReglasCreacion`, reserva);
+    return this.httpClient.post<ReglasReservaError>(environment.url_sejuegasgo + `/reserva/validarReglasCreacion`, reserva);
   }
 
   registrarReservaManual(reserva: Reserva){
-    return this.httpClient.post<number>(environment.url_gestionComplejos + `/reserva/registrarReservaManual`, reserva);
+    return this.httpClient.post<number>(environment.url_sejuegasgo + `/reserva/registrarReservaManual`, reserva);
   }
 
   obtenerPorCodigo(codigo: string){
-    return this.httpClient.get<Reserva>(environment.url_gestionComplejos + `/reserva/obtenerPorCodigo/${codigo}`);
+    return this.httpClient.get<Reserva>(environment.url_sejuegasgo + `/reserva/obtenerPorCodigo/${codigo}`);
   }
 
   listarPorComplejoYFecha(complejo: Complejo, fecha: string){
-    return this.httpClient.post<Reserva[]>(environment.url_gestionComplejos + `/reserva/listadoPorFecha/${fecha}`, complejo);
+    return this.httpClient.post<Reserva[]>(environment.url_sejuegasgo + `/reserva/listadoPorFecha/${fecha}`, complejo);
   }
 
   calcularImporte(reserva: Reserva){
-    return this.httpClient.post<number>(environment.url_gestionComplejos + `/reserva/obtenerImporte`, reserva);
+    return this.httpClient.post<number>(environment.url_sejuegasgo + `/reserva/obtenerImporte`, reserva);
   }
 
   validarReglasAnulacion(reserva: Reserva){
-    return this.httpClient.post<ReglasReservaError>(environment.url_gestionComplejos + `/reserva/validarReglasAnulacion`, reserva);
+    return this.httpClient.post<ReglasReservaError>(environment.url_sejuegasgo + `/reserva/validarReglasAnulacion`, reserva);
   }
 
   anular(reserva: Reserva){
-    return this.httpClient.put<number>(environment.url_gestionComplejos + `/reserva/anular`, reserva);
+    return this.httpClient.put<number>(environment.url_sejuegasgo + `/reserva/anular`, reserva);
   }
 
   validarReglasEdicion(reserva: Reserva, reglaAvalidar: string){
-    return this.httpClient.post<ReglasReservaError>(environment.url_gestionComplejos + `/reserva/validarReglasEdicion`, reserva, {
+    return this.httpClient.post<ReglasReservaError>(environment.url_sejuegasgo + `/reserva/validarReglasEdicion`, reserva, {
       params: new HttpParams().set("reglaAValidar", reglaAvalidar)
     });
   }
 
   modificar(reserva: Reserva){
-    return this.httpClient.put<number>(environment.url_gestionComplejos + `/reserva/modificar`, reserva);
+    return this.httpClient.put<number>(environment.url_sejuegasgo + `/reserva/modificar`, reserva);
   }
 }
 

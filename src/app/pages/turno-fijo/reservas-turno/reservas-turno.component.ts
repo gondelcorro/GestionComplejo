@@ -3,6 +3,12 @@ import {TurnoFijo} from '../../../model/TurnoFijo';
 import {EstadoReserva} from '../../../model/estadoReserva';
 import {Reserva} from '../../../model/reserva';
 import {TurnoFijoService} from '../../../service/turno-fijo.service';
+import {ReservaPago} from '../../../model/ReservaPago';
+import {MatDialog} from '@angular/material/dialog';
+import {AbonarFechaComponent} from './abonar-fecha/abonar-fecha.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {ReservaService} from '../../../service/reserva.service';
+import {CancelarFechaComponent} from './cancelar-fecha/cancelar-fecha.component';
 
 @Component({
   selector: 'reservas-turno',
@@ -12,20 +18,56 @@ import {TurnoFijoService} from '../../../service/turno-fijo.service';
 export class ReservasTurnoComponent implements OnInit {
 
   @Input() turnoFijo: TurnoFijo;
-  public reservasConfirmadas: Reserva[];
-  public reservasFinalizadas: Reserva[];
+  public reservasConfirmadas: ReservaPago[];
+  public reservasAnuladas: ReservaPago[];
+  public reservasFinalizadas: ReservaPago[];
 
-  constructor(private turnoFijoService: TurnoFijoService) {
+  constructor(private turnoFijoService: TurnoFijoService, private dialog: MatDialog, private snackBar: MatSnackBar,
+              private reservaService: ReservaService) {
   }
 
   ngOnInit(): void {
-    this.reservasConfirmadas = this.turnoFijo.reservas.filter(reserva => reserva.estado == EstadoReserva.CONFIRMADA);
-    this.reservasFinalizadas = this.turnoFijo.reservas.filter(reserva => reserva.estado == EstadoReserva.FINALIZADA);
+    this.obtenerEstadoPagoReservaTF(this.turnoFijo);
     this.turnoFijoService.turnoFijoCambio.subscribe(turno =>{
       this.turnoFijo = turno;
-      this.reservasConfirmadas = turno.reservas.filter(reserva => reserva.estado == EstadoReserva.CONFIRMADA);
-      this.reservasFinalizadas = turno.reservas.filter(reserva => reserva.estado == EstadoReserva.FINALIZADA);
+      this.obtenerEstadoPagoReservaTF(this.turnoFijo);
     });
   }
 
+  private obtenerEstadoPagoReservaTF(turnoFijo: TurnoFijo){
+    this.turnoFijoService.obtenerEstadoPagoReservaTF(turnoFijo.idTurnoFijo).subscribe(data =>{
+      this.reservasConfirmadas = data.filter(data => data.reserva.estado == EstadoReserva.CONFIRMADA).reverse();
+      this.reservasAnuladas = data.filter(data => data.reserva.estado == EstadoReserva.ANULADA).reverse();
+      this.reservasFinalizadas = data.filter(data => data.reserva.estado == EstadoReserva.FINALIZADA).reverse();
+    });
+  }
+
+  public abonarFecha(fecha: Reserva){
+    this.dialog.open(AbonarFechaComponent, {
+      width: '350px',
+      disableClose: false,
+      data: fecha
+    });
+  }
+
+  public cancelarFecha(reserva: Reserva) {
+    if (reserva.estado == EstadoReserva.CONFIRMADA) {
+      this.reservaService.validarReglasAnulacion(reserva).subscribe(resp => {
+        if (resp.codigo == 99) {
+          this.dialog.open(CancelarFechaComponent, {
+            data: {
+              reserva: reserva,
+              idTurnoFijo: this.turnoFijo.idTurnoFijo
+            },
+            disableClose: true,
+            width: '500px'
+          });
+        } else {
+          this.snackBar.open(resp.descripcion, 'Aviso', {duration: 5000});
+        }
+      });
+    }else if(reserva.estado == EstadoReserva.ANULADA){
+      this.snackBar.open('La reserva ya fué anulada', 'Aviso', {duration: 5000});
+    }
+  }
 }

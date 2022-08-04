@@ -18,21 +18,21 @@ export class ComplejoService {
 
    // TODOS LAS LLAMADAS AL API DE COMPLEJO VAN DESPROTEGIDAS
    obtenerComplejo(correo : string){
-    return this.http.get<Complejo>( environment.url_gestionComplejos + `/complejo/obtenerPorCorreo/${correo}`);
+    return this.http.get<Complejo>( environment.url_sejuegasgo + `/complejo/obtenerPorCorreo/${correo}`);
    }
 
    leerArchivo(idComplejo: number, imgOrLogo:  number) {
-    return this.http.get(environment.url_gestionComplejos + "/complejo/leerArchivo/" + `${idComplejo}` + "/" + `${imgOrLogo}` , {
+    return this.http.get(environment.url_sejuegasgo + "/complejo/leerArchivo/" + `${idComplejo}` + "/" + `${imgOrLogo}` , {
       responseType: 'blob' //es blob xq recibe una secuencia de bytes
     });
   }
 
   modificarComplejo(complejo: Complejo){
-    return this.http.put<Complejo>(environment.url_gestionComplejos + "/complejo/modificar", complejo);
+    return this.http.put<Complejo>(environment.url_sejuegasgo + "/complejo/modificar", complejo);
   }
 
   guardarArchivo(formData: FormData, idComplejo: number) {
-    return this.http.post(environment.url_gestionComplejos + "/complejo/guardarArchivo/" + `${idComplejo}`, formData, {
+    return this.http.post(environment.url_sejuegasgo + "/complejo/guardarArchivo/" + `${idComplejo}`, formData, {
       responseType: 'text'//el backend devuelve un texto
     });
   }
@@ -42,7 +42,7 @@ export class ComplejoService {
       'usuario': usuario,
       'clave': claveActual
     }
-    return this.http.post<boolean>(environment.url_gestionComplejos + `/complejo/autenticacion`, body);
+    return this.http.post<boolean>(environment.url_sejuegasgo + `/complejo/autenticacion`, body);
   }
 
   cambiarClave(usuario: string, nuevaClave: string){
@@ -50,7 +50,7 @@ export class ComplejoService {
       'usuario': usuario,
       'clave': nuevaClave
     }
-    return this.http.put<boolean>(environment.url_gestionComplejos + `/complejo/cambioClave`, body);
+    return this.http.put<boolean>(environment.url_sejuegasgo + `/complejo/cambioClave`, body);
   }
 
 }
