@@ -9,7 +9,7 @@ import { AnimationOptions } from 'ngx-lottie';
 export class ErrorServerComponent implements OnInit {
 
   options: AnimationOptions = {
-    path: '/assets/animations/error500.json', // download the JSON version of animation in your project directory and add the path to it like ./assets/animations/example.json
+    path: './assets/animations/error500.json', // download the JSON version of animation in your project directory and add the path to it like ./assets/animations/example.json
   };
 
   constructor() { }
