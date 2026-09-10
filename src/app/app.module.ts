@@ -36,7 +36,6 @@ import {NuevaComponent} from './pages/reserva/nueva/nueva.component';
 import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
 import {ProcesandoReservaComponent} from './pages/reserva/procesando-reserva/procesando-reserva.component';
 import {ConfiguracionComponent} from './pages/configuracion/configuracion.component';
-import {NgxMatFileInputModule} from '@angular-material-components/file-input';
 import {DiasAtencionComponent} from './pages/configuracion/dias-atencion/dias-atencion.component';
 import {BalanceComponent} from './pages/balance/balance.component';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
@@ -120,7 +119,6 @@ export function playerFactory() {
     SchedulerModule.forRoot({locale: 'es', headerDateFormat: 'daysRange'}), //npm install angular-calendar-scheduler date-fns --save and npm install moment
     LottieModule.forRoot({player: playerFactory}), // npm i lottie-web ngx-lottie
     NgxMatTimepickerModule.setLocale('es-Ar'), //npm i --save ngx-mat-timepicker (USADO PARA EL RELOJ MODAL)
-    NgxMatFileInputModule, //npm install --save @angular-material-components/file-input
     NgxMaterialTimepickerModule, //npm install --save ngx-material-timepicker (USADO PARA LA HORA TIPO INPUT)
     MatDatepickerModule,
     MatMomentDateModule //npm i @angular/material-moment-adapter
