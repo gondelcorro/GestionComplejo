@@ -12,7 +12,6 @@ import {AvatarModule} from 'ngx-avatar';
 import {FlipModule} from 'ngx-flip';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import {CanchaComponent} from './pages/cancha/cancha.component';
-import {FlexLayoutModule} from '@angular/flex-layout';
 import {EdicionComponent} from './pages/cancha/edicion/edicion.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PagoComponent} from './pages/pago/pago.component';
@@ -22,7 +21,7 @@ import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {SchedulerModule} from 'angular-calendar-scheduler';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 
-import {DatePipe, registerLocaleData} from '@angular/common';
+import {CommonModule, DatePipe, registerLocaleData} from '@angular/common';
 import localeEsAr from '@angular/common/locales/es-AR';
 import {DetalleReservaComponent} from './pages/pago/detalle-reserva/detalle-reserva.component';
 import {LottieModule} from 'ngx-lottie';
@@ -111,10 +110,10 @@ export function playerFactory() {
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    CommonModule,
     AvatarModule, //npm install ngx-avatar --save
     FlipModule, // npm install ngx-flip --save
     IvyCarouselModule, //npm i angular-responsive-carousel
-    FlexLayoutModule, //npm i  @angular/flex-layout (reiniciar)
     FormsModule, // NECESARIO IMPORTAR PARA USAR EL NgModule
     ReactiveFormsModule,
     CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory}), // ng add angular-calendar
