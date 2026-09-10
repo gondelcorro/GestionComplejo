@@ -24,14 +24,12 @@ export class AppComponent implements OnInit {
     this._activeRoute.queryParams.subscribe(queryParams => {
       if (queryParams.token != null) { //El parametro q viene del login en la url se llama token
         let token = queryParams.token;
-        console.log("TOKEN COMPLETO: " + token)
-        let jsonToken = JSON.parse(queryParams.token); //CONVIERTO LA RESP A UN JSON
-        const decodedToken = decode(jsonToken.access_token); //DECODIFICO EL access_token
-        let user = decodedToken.user_name;  //EXTRAIGO EL USER
-        //let rol = decodedToken.authorities[0];  //EXTRAIGO EL ROL
-        console.log("USER: " + user)
-        sessionStorage.setItem(environment.token, jsonToken.access_token); //Guardo unicamente el access token
-        sessionStorage.setItem(environment.user, user); //Guardo el user
+        console.log("TOKEN AS STRING: " + token)
+        let payload = token.split('.')[1];
+        let jsonToken = JSON.parse(atob(payload.replace(/-/g, '+').replace(/_/g, '/')));
+        console.log("TOKEN AS JSON:", jsonToken);
+        sessionStorage.setItem(environment.token, token); //Guardo el token
+        sessionStorage.setItem(environment.user, jsonToken.user_name); //Guardo el user
         this._router.navigate(['/main-layout/dashboard']);// Fuerzo a q se actualice la navegacion para borrar el token de la url
       }
     });
