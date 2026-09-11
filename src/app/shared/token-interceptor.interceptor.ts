@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {throwError as observableThrowError, Observable} from 'rxjs';
-import {catchError, finalize, map, switchMap, timeInterval} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import {
   HttpInterceptor,
   HttpRequest,
@@ -11,9 +11,8 @@ import {
   HttpProgressEvent,
   HttpResponse,
   HttpUserEvent,
-  HttpErrorResponse, HttpHeaders
+  HttpErrorResponse,
 } from '@angular/common/http';
-import {error} from '@angular/compiler/src/util';
 import {LoginService} from './login.service';
 import {LoaderService} from './loader.service';
 
@@ -56,11 +55,11 @@ export class TokenInterceptor implements HttpInterceptor {
               case 404:
                 return this.handle404Error(err);
               case 401:
-                return this.handle401Error(request, next);
+                return this.handle401Error(request, next, err);
               case 500:
-                return this.handle500Error(error);
+                return this.handle500Error(err);
               default:
-                return this.handle500Error(error);
+                return this.handle500Error(err);
             }
           } else {
             return observableThrowError(err);
@@ -74,7 +73,7 @@ export class TokenInterceptor implements HttpInterceptor {
     return observableThrowError(error);
   }
 
-  handle401Error(req: HttpRequest<any>, next: HttpHandler) {
+  handle401Error(req: HttpRequest<any>, next: HttpHandler, error) {
     if (!this.loginService.isLoggedIn() || this.loginService.isTokenExpired()) {
       this.loginService.logout();
     }

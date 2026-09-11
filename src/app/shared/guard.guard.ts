@@ -1,6 +1,10 @@
 import { LoginService } from './login.service';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  RouterStateSnapshot
+} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,20 +12,24 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 export class GuardGuard implements CanActivate {
 
   constructor(private loginService: LoginService) {
-
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-    let estaLogeado = this.loginService.isLoggedIn();
-    let tokenExpirado = this.loginService.isTokenExpired();
-    console.log("LOGUADO: " + estaLogeado);
-    console.log("EXPIRADO: " + tokenExpirado);
-    if(estaLogeado && !tokenExpirado){
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean {
+
+    const estaLogeado = this.loginService.isLoggedIn();
+    const tokenExpirado = this.loginService.isTokenExpired();
+
+    console.log('LOGUEADO: ' + estaLogeado);
+    console.log('EXPIRADO: ' + tokenExpirado);
+
+    if (estaLogeado && !tokenExpirado) {
       return true;
-    }else{
+    } else {
       this.loginService.logout();
       return false;
     }
   }
-
 }
