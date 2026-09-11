@@ -15,11 +15,6 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class DashboardComponent implements OnInit {
 
-  images = [
-    {path: 'assets/images/carousel/autogestion.jpg'},
-    {path: 'assets/images/carousel/automoviles.jpg'},
-    {path: 'assets/images/carousel/bicicleta.jpg'}
-  ];
   private complejo: Complejo;
   public imagenComplejo: any;
   public cantReservasConf = 0;
