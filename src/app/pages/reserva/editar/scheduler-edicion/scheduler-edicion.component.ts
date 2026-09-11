@@ -38,7 +38,7 @@ export class SchedulerEdicionComponent implements OnInit {
   viewDate: Date = new Date();
   viewDays: number = 1; //DAYS_IN_WEEK
 
-  refresh: Subject<any> = new Subject();
+  refresh: Subject<void> = new Subject<void>();
   locale: string = 'es';
   hourSegments: number = 2;
   weekStartsOn: number = 1;
