@@ -32,7 +32,7 @@
     "ngx-avatars": "^1.4.0",
     "ngx-flip": "^9.0.0",
     "ngx-lottie": "8.3.0",
-    "ngx-mat-timepicker": "^14.0.8",
+    "ngx-mat-timepicker": "^15.0.1",
     "ngx-material-timepicker": "^5.5.3",
     "rxjs": "^6.6.7",
     "tslib": "^2.3.1",
