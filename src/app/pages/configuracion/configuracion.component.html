@@ -38,9 +38,12 @@
         </div>
         <div fxLayout="row">
           <mat-form-field style="width: 75%">
-            <mat-label> Imagen</mat-label>
-            <ngx-mat-file-input formControlName="imagen" [multiple]="false" [accept]="'.jpg'" required>
-            </ngx-mat-file-input>
+            <app-file-input
+              formControlName="imagen"
+              [title]="'Imagen:'"
+              [multiple]="false"
+              accept=".jpg,.jpeg">
+            </app-file-input>
             <mat-hint>Tamaño máximo de la imagen 3MB</mat-hint>
           </mat-form-field>
           <div class="ver-imagen">
@@ -48,9 +51,12 @@
           </div>
           <span style="width: 100px"></span>
           <mat-form-field style="width: 75%">
-            <mat-label> Logo</mat-label>
-            <ngx-mat-file-input formControlName="logo" [multiple]="false" [accept]="'.jpg'" required>
-            </ngx-mat-file-input>
+            <app-file-input
+              formControlName="logo"
+              [title]="'Logo::'"
+              [multiple]="false"
+              accept=".jpg,.jpeg">
+            </app-file-input>
             <mat-hint>Tamaño máximo del logo 3MB</mat-hint>
           </mat-form-field>
           <div class="ver-imagen">

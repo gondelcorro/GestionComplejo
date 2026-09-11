@@ -59,6 +59,7 @@ import {PagoTurnoFijoComponent} from './pages/pago/turno-fijo/turno-fijo.compone
 import {TurnoFijoComponent} from './pages/turno-fijo/turno-fijo.component';
 import { AbonarFechaComponent } from './pages/turno-fijo/reservas-turno/abonar-fecha/abonar-fecha.component';
 import { CancelarFechaComponent } from './pages/turno-fijo/reservas-turno/cancelar-fecha/cancelar-fecha.component';
+import { FileInputComponent } from './file-input/file-input.component';
 
 // add this lines for lotties
 export function playerFactory() {
@@ -101,7 +102,8 @@ export function playerFactory() {
     TurnoLibreComponent,
     PagoTurnoFijoComponent,
     AbonarFechaComponent,
-    CancelarFechaComponent
+    CancelarFechaComponent,
+    FileInputComponent
   ],
   imports: [
     BrowserModule,

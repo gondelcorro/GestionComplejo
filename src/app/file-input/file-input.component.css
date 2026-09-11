@@ -1,0 +1,17 @@
+.file-input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-name{
+  color: green;
+}
+
+.file-placeholder{
+  color: orange;
+}
+
+.file-error{
+  color: red;
+}

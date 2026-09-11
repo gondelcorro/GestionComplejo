@@ -1,0 +1,34 @@
+<div class="file-input-container">
+  <label>{{title}}</label>
+  <input
+    #fileInput
+    type="file"
+    [accept]="accept"
+    [multiple]="multiple"
+    [disabled]="isDisabled"
+    (change)="onFileSelected($event)"
+    hidden/>
+  <button
+    matButton="elevated"
+    [disabled]="isDisabled"
+    (click)="fileInput.click()">
+    Seleccionar archivo
+  </button>
+  <span
+    class="file-name"
+    *ngIf="fileName">
+    {{ fileName }}
+  </span>
+  <span
+    class="file-placeholder"
+    *ngIf="!fileName">
+    Ningún archivo seleccionado
+  </span>
+</div>
+
+<div
+  class="file-error"
+  *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
+

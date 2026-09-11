@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Complejo} from '../../model/complejo';
-import {MaxSizeValidator} from '@angular-material-components/file-input';
 import {ComplejoSharedService} from '../../service/complejo-shared.service';
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import {DiasAtencionComponent} from './dias-atencion/dias-atencion.component';
@@ -46,8 +45,8 @@ export class ConfiguracionComponent implements OnInit {
       'direccion': new FormControl(''),
       'telefono': new FormControl(''),
       'correo': new FormControl('', Validators.email),
-      'imagen': new FormControl([MaxSizeValidator(3 * 1024)]),
-      'logo': new FormControl([MaxSizeValidator(3 * 1024)])
+      'imagen': new FormControl(null, Validators.required),
+      'logo': new FormControl(null, Validators.required)
     });
     this.formDiasYHorarios = new FormGroup({
       'apertura': new FormControl(''),
