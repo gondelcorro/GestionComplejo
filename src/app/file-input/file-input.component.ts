@@ -15,7 +15,7 @@ import {
   selector: 'app-file-input',
   standalone: false,
   templateUrl: './file-input.component.html',
-  styleUrl: './file-input.component.css',
+  styleUrls: ['./file-input.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

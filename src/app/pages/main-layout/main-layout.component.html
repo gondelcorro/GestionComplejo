@@ -19,9 +19,9 @@
     </mat-menu> -->
 
     <div class="avatar">
-      <ngx-avatar [name]='complejo.nombre' size="35">
-      </ngx-avatar>
-      <button mat-button color="profile" [disableRipple]="true" [matMenuTriggerFor]="menu">
+      <ngx-avatars [name]="complejo.nombre" size="35">
+      </ngx-avatars>
+      <button mat-button [disableRipple]="true" [matMenuTriggerFor]="menu">
         <span>{{complejo.nombre}}</span>
         <mat-icon>expand_more</mat-icon>
       </button>
