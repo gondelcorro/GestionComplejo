@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {Complejo} from '../../model/complejo';
 import {ComplejoSharedService} from '../../service/complejo-shared.service';
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
@@ -22,9 +22,9 @@ import {ConfirmaCambiosComponent} from './confirma-cambios/confirma-cambios.comp
 export class ConfiguracionComponent implements OnInit {
 
   complejo: Complejo;
-  formDatosComplejo: FormGroup;
-  formDiasYHorarios: FormGroup;
-  formToken: FormGroup;
+  formDatosComplejo: UntypedFormGroup;
+  formDiasYHorarios: UntypedFormGroup;
+  formToken: UntypedFormGroup;
   checkTodos = false;
   checkLunVier = false;
   checkPersonalizado = false;
@@ -33,31 +33,31 @@ export class ConfiguracionComponent implements OnInit {
   chipText3 = 'Si activas esta opción los jugadores no podrán reservar canchas por el periodo de tiempo indicado';
   imgSelected: File;
   logoSelected: File;
-  cierreTempHasta = new FormControl(new Date());
+  cierreTempHasta = new UntypedFormControl(new Date());
   minDate = new Date().setDate(new Date().getDate() + 1);
 
   constructor(private complejoSharedService: ComplejoSharedService, private bottomSheet: MatBottomSheet,
               private dialog: MatDialog, private datePipe: DatePipe, private complejoService: ComplejoService,
               private snackbar: MatSnackBar) {
 
-    this.formDatosComplejo = new FormGroup({
-      'nombre': new FormControl(''),
-      'direccion': new FormControl(''),
-      'telefono': new FormControl(''),
-      'correo': new FormControl('', Validators.email),
-      'imagen': new FormControl(null, Validators.required),
-      'logo': new FormControl(null, Validators.required)
+    this.formDatosComplejo = new UntypedFormGroup({
+      'nombre': new UntypedFormControl(''),
+      'direccion': new UntypedFormControl(''),
+      'telefono': new UntypedFormControl(''),
+      'correo': new UntypedFormControl('', Validators.email),
+      'imagen': new UntypedFormControl(null, Validators.required),
+      'logo': new UntypedFormControl(null, Validators.required)
     });
-    this.formDiasYHorarios = new FormGroup({
-      'apertura': new FormControl(''),
-      'cierre': new FormControl(''),
-      'inicio': new FormControl(''),
-      'fin': new FormControl('')
+    this.formDiasYHorarios = new UntypedFormGroup({
+      'apertura': new UntypedFormControl(''),
+      'cierre': new UntypedFormControl(''),
+      'inicio': new UntypedFormControl(''),
+      'fin': new UntypedFormControl('')
     });
-    this.formToken = new FormGroup({
-      'hsMinEduAnu': new FormControl(''),
-      'hsMaxReserva': new FormControl(''),
-      'token': new FormControl('')
+    this.formToken = new UntypedFormGroup({
+      'hsMinEduAnu': new UntypedFormControl(''),
+      'hsMaxReserva': new UntypedFormControl(''),
+      'token': new UntypedFormControl('')
     });
   }
 

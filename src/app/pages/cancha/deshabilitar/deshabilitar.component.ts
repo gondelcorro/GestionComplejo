@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {DatePipe} from '@angular/common';
@@ -15,7 +15,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class DeshabilitarComponent implements OnInit {
 
-  date = new FormControl(new Date());
+  date = new UntypedFormControl(new Date());
   minDate = new Date();
   dateSelected;
 

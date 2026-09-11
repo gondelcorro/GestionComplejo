@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Complejo} from '../../../../model/complejo';
 import {Cancha} from '../../../../model/cancha';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {MatSort} from '@angular/material/sort';
 import {ComplejoService} from '../../../../service/complejo.service';
 import {ComplejoSharedService} from '../../../../service/complejo-shared.service';
@@ -53,7 +53,7 @@ export class BalanceMensualComponent implements OnInit {
     {idCol: 'saldo', titleCol: 'Saldo'}
   ];
   columnsToDisplayMap: any[] = this.columnsToDisplay.map(col => col.idCol);
-  date = new FormControl(moment());
+  date = new UntypedFormControl(moment());
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private balanceService: BalanceService, private complejoService: ComplejoService, private complejoSharedService: ComplejoSharedService,

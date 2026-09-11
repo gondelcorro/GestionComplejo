@@ -1,6 +1,6 @@
 import {Component, Injectable, Input, OnInit, ViewChild} from '@angular/core';
 import {Complejo} from '../../../../model/complejo';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {MatSort} from '@angular/material/sort';
 import {ComplejoService} from '../../../../service/complejo.service';
 import {ComplejoSharedService} from '../../../../service/complejo-shared.service';
@@ -63,7 +63,7 @@ export class BalanceSemanalComponent implements OnInit {
     {idCol: 'saldo', titleCol: 'Saldo'}
   ];
   columnsToDisplayMap: any[] = this.columnsToDisplay.map(col => col.idCol);
-  range: FormGroup;
+  range: UntypedFormGroup;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private balanceService: BalanceService, private complejoService: ComplejoService, private  complejoSharedService: ComplejoSharedService,
@@ -72,9 +72,9 @@ export class BalanceSemanalComponent implements OnInit {
     fechaIni.setDate(fechaIni.getDate()-3);
     let fechaFin = new Date();
     fechaFin.setDate(fechaFin.getDate()+3);
-    this.range = new FormGroup({
-      inicio: new FormControl(fechaIni),
-      fin: new FormControl(fechaFin)
+    this.range = new UntypedFormGroup({
+      inicio: new UntypedFormControl(fechaIni),
+      fin: new UntypedFormControl(fechaFin)
     });
   }
 

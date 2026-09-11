@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {ComplejoService} from '../../../service/complejo.service';
 import {environment} from '../../../../environments/environment';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -12,17 +12,17 @@ import {MatDialogRef} from '@angular/material/dialog';
 })
 export class CambioClaveComponent implements OnInit {
 
-  public formGorup: FormGroup;
+  public formGorup: UntypedFormGroup;
   public hidePass = true;
   public hidePassConfirm = true;
 
   constructor(private dialogRef: MatDialogRef<CambioClaveComponent>, private complejoService: ComplejoService,
               private snackbar: MatSnackBar) {
 
-    this.formGorup = new FormGroup({
-      claveActual: new FormControl(),
-      clave: new FormControl('', [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*[0-9]).{10,}$")]),
-      confirmaClave: new FormControl()
+    this.formGorup = new UntypedFormGroup({
+      claveActual: new UntypedFormControl(),
+      clave: new UntypedFormControl('', [Validators.required, Validators.pattern("^(?=.*[A-Za-z])(?=.*[0-9]).{10,}$")]),
+      confirmaClave: new UntypedFormControl()
     });
     this.formGorup.controls['confirmaClave'].setValidators([Validators.required, this.coincidenClaves.bind(this)]);
   }
@@ -30,7 +30,7 @@ export class CambioClaveComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  coincidenClaves(control: FormControl): { [s: string]: boolean } {
+  coincidenClaves(control: UntypedFormControl): { [s: string]: boolean } {
     return control.value != this.formGorup.controls['clave'].value ? { coinciden: false } : null
   }
 

@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {DatePipe} from '@angular/common';
@@ -20,7 +20,7 @@ import {environment} from '../../../../environments/environment';
 })
 export class NuevaComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   format = 24;
   minutesGap = 30;
   fechaFormateada: string;
@@ -38,9 +38,9 @@ export class NuevaComponent implements OnInit {
               private datePipe: DatePipe, private reservaService: ReservaService, private snackBar: MatSnackBar,
               private jugadorService: JugadorService, private dialog: MatDialog) {
 
-    this.form = new FormGroup({
-      'horaFin': new FormControl(''),
-      'jugador': new FormControl('')
+    this.form = new UntypedFormGroup({
+      'horaFin': new UntypedFormControl(''),
+      'jugador': new UntypedFormControl('')
     });
     this.fechaFormateada = this.datePipe.transform(data.fechaReserva, 'dd-MM-yyyy');
     this.horaInicio = this.datePipe.transform(data.fechaReserva, 'HH:mm');

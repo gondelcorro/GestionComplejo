@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {Reserva} from '../../../model/reserva';
 import {Cancha} from '../../../model/cancha';
 import {Complejo} from '../../../model/complejo';
@@ -23,9 +23,9 @@ export class EditarComponent implements OnInit {
   public maxDate: Date;
   public mostrarScheduler = false;
   public reservas: Reserva[];
-  public formGroup: FormGroup;
-  public formCtrlCancha: FormControl;
-  public formCtrlFecha: FormControl;
+  public formGroup: UntypedFormGroup;
+  public formCtrlCancha: UntypedFormControl;
+  public formCtrlFecha: UntypedFormControl;
   textoEdicion = "En la edición de reserva podrás cambiar de cancha, fecha y horario pero el complejo deberá ser el mismo que seleccionaste en tu reserva" +
     " original, al igual que el tiempo del turno y el importe que abonaste."
 
@@ -36,9 +36,9 @@ export class EditarComponent implements OnInit {
     this.minDate = new Date(); //Fecha actual
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 7);
-    this.formGroup = new FormGroup({
-      'cancha': new FormControl('', [Validators.required]),
-      'fecha': new FormControl('', [Validators.required])
+    this.formGroup = new UntypedFormGroup({
+      'cancha': new UntypedFormControl('', [Validators.required]),
+      'fecha': new UntypedFormControl('', [Validators.required])
     });
   }
 

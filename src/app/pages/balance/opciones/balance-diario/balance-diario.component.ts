@@ -5,7 +5,7 @@ import {Complejo} from '../../../../model/complejo';
 import {ComplejoSharedService} from '../../../../service/complejo-shared.service';
 import {MatSort} from '@angular/material/sort';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {BalanceService} from '../../../../service/balance.service';
 import {DatePipe} from '@angular/common';
 import {MatTableDataSource} from '@angular/material/table';
@@ -31,7 +31,7 @@ export class BalanceDiarioComponent implements OnInit {
     {idCol: 'saldo', titleCol: 'Saldo'}
   ];
   columnsToDisplayMap: any[] = this.columnsToDisplay.map(col => col.idCol);
-  date = new FormControl(new Date());
+  date = new UntypedFormControl(new Date());
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private balanceService: BalanceService, private complejoService: ComplejoService, private  complejoSharedService: ComplejoSharedService,

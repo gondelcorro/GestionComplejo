@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {DatePipe} from '@angular/common';
@@ -27,7 +27,7 @@ export class NuevoTurnoComponent implements OnInit {
   public complejo: Complejo;
   public canchas: Cancha[] = [];
   diasSemana: string[] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
-  form: FormGroup;
+  form: UntypedFormGroup;
   format = 24;
   minutesGap = 30;
   horaPorDefecto: string = "19:00";
@@ -40,14 +40,14 @@ export class NuevoTurnoComponent implements OnInit {
               private turnoFijoService: TurnoFijoService, private snackBar: MatSnackBar, private canchaService: CanchaService,
               private jugadorService: JugadorService, private complejoService: ComplejoService) {
 
-    this.form = new FormGroup({
-      'fechaAlta': new FormControl(this.fechaAlta, Validators.required),
-      'horaInicio': new FormControl('', Validators.required),
-      'horaFin': new FormControl('', Validators.required),
-      'jugador': new FormControl('', Validators.required),
-      'cancha': new FormControl('', Validators.required),
-      'diaSelect': new FormControl('', Validators.required),
-      'cantTurnos': new FormControl(1, Validators.required)
+    this.form = new UntypedFormGroup({
+      'fechaAlta': new UntypedFormControl(this.fechaAlta, Validators.required),
+      'horaInicio': new UntypedFormControl('', Validators.required),
+      'horaFin': new UntypedFormControl('', Validators.required),
+      'jugador': new UntypedFormControl('', Validators.required),
+      'cancha': new UntypedFormControl('', Validators.required),
+      'diaSelect': new UntypedFormControl('', Validators.required),
+      'cantTurnos': new UntypedFormControl(1, Validators.required)
     });
 
     this.fechaAlta = new Date();
