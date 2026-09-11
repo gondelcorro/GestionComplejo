@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {ComplejoService} from '../../../service/complejo.service';
 import {environment} from '../../../../environments/environment';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {MatDialogRef} from '@angular/material/dialog';
+import {MatLegacySnackBar as MatSnackBar} from '@angular/material/legacy-snack-bar';
+import {MatLegacyDialogRef as MatDialogRef} from '@angular/material/legacy-dialog';
 
 @Component({
   selector: 'app-cambio-clave',

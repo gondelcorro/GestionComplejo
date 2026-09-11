@@ -9,7 +9,7 @@ import {environment} from '../../../../../environments/environment';
 import {MatDatepicker, MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {Moment} from 'moment';
 import {MAT_DATE_FORMATS} from '@angular/material/core';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
 import {BalanceService} from '../../../../service/balance.service';
 import {DatePipe} from '@angular/common';
 

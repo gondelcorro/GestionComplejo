@@ -1,16 +1,16 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {NuevoTurnoComponent} from './nuevo-turno/nuevo-turno.component';
-import {MatPaginator} from '@angular/material/paginator';
+import {MatLegacyPaginator as MatPaginator} from '@angular/material/legacy-paginator';
 import {MatSort} from '@angular/material/sort';
 import {environment} from '../../../environments/environment';
 import {ComplejoService} from '../../service/complejo.service';
 import {ComplejoSharedService} from '../../service/complejo-shared.service';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
 import {TurnoFijoService} from '../../service/turno-fijo.service';
 import {TurnoFijo} from '../../model/TurnoFijo';
 import {EstadoReserva} from '../../model/estadoReserva';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatLegacySnackBar as MatSnackBar} from '@angular/material/legacy-snack-bar';
 
 @Component({
   selector: 'app-turno-fijo',

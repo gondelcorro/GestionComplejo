@@ -6,7 +6,7 @@ import {ComplejoService} from '../../../../service/complejo.service';
 import {ComplejoSharedService} from '../../../../service/complejo-shared.service';
 import {environment} from '../../../../../environments/environment';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
 import {DatePipe} from '@angular/common';
 import {BalanceService} from '../../../../service/balance.service';
 import {

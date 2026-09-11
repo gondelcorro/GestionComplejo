@@ -7,8 +7,8 @@ import {
 } from 'angular-calendar-scheduler';
 import {addMonths, endOfDay} from 'date-fns';
 import {Subject} from 'rxjs';
-import {MatDialog} from '@angular/material/dialog';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatLegacySnackBar as MatSnackBar} from '@angular/material/legacy-snack-bar';
 import {Reserva} from '../../../../model/reserva';
 import {Complejo} from '../../../../model/complejo';
 import {Cancha} from '../../../../model/cancha';

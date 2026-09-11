@@ -2,12 +2,12 @@ import { ComplejoSharedService } from './../../service/complejo-shared.service';
 import { EdicionComponent } from './edicion/edicion.component';
 import { Cancha } from './../../model/cancha';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { CanchaService } from 'src/app/service/cancha.service';
 import {Complejo} from '../../model/complejo';
 import {ComplejoService} from '../../service/complejo.service';
 import {environment} from '../../../environments/environment';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatLegacySnackBar as MatSnackBar} from '@angular/material/legacy-snack-bar';
 import {DeshabilitarComponent} from './deshabilitar/deshabilitar.component';
 
 @Component({

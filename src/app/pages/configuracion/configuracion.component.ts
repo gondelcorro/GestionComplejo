@@ -5,12 +5,12 @@ import {ComplejoSharedService} from '../../service/complejo-shared.service';
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import {DiasAtencionComponent} from './dias-atencion/dias-atencion.component';
 import {ImagenComponent} from './imagen/imagen.component';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {DatePipe} from '@angular/common';
 import {ComplejoService} from '../../service/complejo.service';
 import {DiasAtencion} from '../../model/diasAtencion';
 import {environment} from '../../../environments/environment';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatLegacySnackBar as MatSnackBar} from '@angular/material/legacy-snack-bar';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {ConfirmaCambiosComponent} from './confirma-cambios/confirma-cambios.component';
 

@@ -3,7 +3,7 @@ import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import {Reserva} from '../../../model/reserva';
 import {Cancha} from '../../../model/cancha';
 import {Complejo} from '../../../model/complejo';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef} from '@angular/material/legacy-dialog';
 import {DatePipe} from '@angular/common';
 import {ReservaService} from '../../../service/reserva.service';
 import {CanchaService} from '../../../service/cancha.service';

@@ -8,7 +8,7 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {UntypedFormControl} from '@angular/forms';
 import {BalanceService} from '../../../../service/balance.service';
 import {DatePipe} from '@angular/common';
-import {MatTableDataSource} from '@angular/material/table';
+import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
 
 @Component({
   selector: 'app-balance-diario',
