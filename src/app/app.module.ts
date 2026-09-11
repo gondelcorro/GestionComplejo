@@ -8,7 +8,6 @@ import {MainLayoutComponent} from './pages/main-layout/main-layout.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {FlipModule} from 'ngx-flip';
 import {CanchaComponent} from './pages/cancha/cancha.component';
 import {EdicionComponent} from './pages/cancha/edicion/edicion.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -112,7 +111,6 @@ export function playerFactory() {
     HttpClientModule,
     CommonModule,
     AvatarModule, // npm i ngx-avatars
-    FlipModule, // npm install ngx-flip --save
     FormsModule, // NECESARIO IMPORTAR PARA USAR EL NgModule
     ReactiveFormsModule,
     CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory}), // ng add angular-calendar
