@@ -8,7 +8,6 @@ import {MainLayoutComponent} from './pages/main-layout/main-layout.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {AvatarModule} from 'ngx-avatar';
 import {FlipModule} from 'ngx-flip';
 import {CanchaComponent} from './pages/cancha/cancha.component';
 import {EdicionComponent} from './pages/cancha/edicion/edicion.component';
@@ -59,6 +58,7 @@ import {TurnoFijoComponent} from './pages/turno-fijo/turno-fijo.component';
 import { AbonarFechaComponent } from './pages/turno-fijo/reservas-turno/abonar-fecha/abonar-fecha.component';
 import { CancelarFechaComponent } from './pages/turno-fijo/reservas-turno/cancelar-fecha/cancelar-fecha.component';
 import { FileInputComponent } from './file-input/file-input.component';
+import {AvatarModule} from 'ngx-avatars';
 
 // add this lines for lotties
 export function playerFactory() {
@@ -111,7 +111,7 @@ export function playerFactory() {
     MaterialModule,
     HttpClientModule,
     CommonModule,
-    AvatarModule, //npm install ngx-avatar --save
+    AvatarModule, // npm i ngx-avatars
     FlipModule, // npm install ngx-flip --save
     FormsModule, // NECESARIO IMPORTAR PARA USAR EL NgModule
     ReactiveFormsModule,
