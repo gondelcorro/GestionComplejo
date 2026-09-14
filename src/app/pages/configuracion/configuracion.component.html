@@ -118,13 +118,13 @@
                                 [minutesGap]="30">
             </ngx-mat-timepicker>
           </div>
-          <mat-chip-list>
+          <mat-chip-set>
             <mat-chip color="primary" selected selectable="false">
               <mat-icon>info</mat-icon>
               <span style="width: 5px"></span>
               {{chipText1}}
             </mat-chip>
-          </mat-chip-list>
+          </mat-chip-set>
         </div>
         <br><br>
         <div>
@@ -167,13 +167,13 @@
                                 [minutesGap]="30">
             </ngx-mat-timepicker>
           </div>
-          <mat-chip-list>
+          <mat-chip-set>
             <mat-chip color="basic" selected selectable="false">
               <mat-icon>info</mat-icon>
               <span style="width: 5px"></span>
               {{chipText2}}
             </mat-chip>
-          </mat-chip-list>
+          </mat-chip-set>
         </div>
         <br>
       </form>
@@ -213,13 +213,13 @@
         <mat-checkbox style="margin-top: 10px; margin-right: 5px" [(ngModel)]="complejo.cierreTemporal ">
           Cerrar el complejo temporalmente
         </mat-checkbox>
-        <mat-chip-list>
+        <mat-chip-set>
           <mat-chip color="warn" selected selectable="false">
             <mat-icon>info</mat-icon>
             <span style="width: 5px"></span>
             {{chipText3}}
           </mat-chip>
-        </mat-chip-list>
+        </mat-chip-set>
       </div>
       <br>
       <div *ngIf="complejo.cierreTemporal">

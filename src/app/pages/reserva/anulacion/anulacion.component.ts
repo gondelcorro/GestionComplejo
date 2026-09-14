@@ -1,7 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Reserva} from '../../../model/reserva';
-import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef} from '@angular/material/legacy-dialog';
-import {MatLegacySnackBar as MatSnackBar} from '@angular/material/legacy-snack-bar';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {ReservaComponent} from '../reserva.component';
 import {ReservaService} from '../../../service/reserva.service';
 import {DatePipe} from '@angular/common';

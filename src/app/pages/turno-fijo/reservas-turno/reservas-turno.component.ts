@@ -4,9 +4,9 @@ import {EstadoReserva} from '../../../model/estadoReserva';
 import {Reserva} from '../../../model/reserva';
 import {TurnoFijoService} from '../../../service/turno-fijo.service';
 import {ReservaPago} from '../../../model/ReservaPago';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {AbonarFechaComponent} from './abonar-fecha/abonar-fecha.component';
-import {MatLegacySnackBar as MatSnackBar} from '@angular/material/legacy-snack-bar';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {ReservaService} from '../../../service/reserva.service';
 import {CancelarFechaComponent} from './cancelar-fecha/cancelar-fecha.component';
 

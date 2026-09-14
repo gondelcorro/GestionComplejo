@@ -1,12 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
-import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {DatePipe} from '@angular/common';
 import {CanchaService} from '../../../service/cancha.service';
-import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef} from '@angular/material/legacy-dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Cancha} from '../../../model/cancha';
-import {MatLegacySnackBar as MatSnackBar} from '@angular/material/legacy-snack-bar';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-deshabilitar',

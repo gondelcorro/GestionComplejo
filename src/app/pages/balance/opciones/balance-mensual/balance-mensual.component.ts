@@ -1,15 +1,14 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Complejo} from '../../../../model/complejo';
-import {Cancha} from '../../../../model/cancha';
 import {UntypedFormControl} from '@angular/forms';
 import {MatSort} from '@angular/material/sort';
 import {ComplejoService} from '../../../../service/complejo.service';
 import {ComplejoSharedService} from '../../../../service/complejo-shared.service';
 import {environment} from '../../../../../environments/environment';
-import {MatDatepicker, MatDatepickerInputEvent} from '@angular/material/datepicker';
+import {MatDatepicker} from '@angular/material/datepicker';
 import {Moment} from 'moment';
 import {MAT_DATE_FORMATS} from '@angular/material/core';
-import {MatLegacyTableDataSource as MatTableDataSource} from '@angular/material/legacy-table';
+import {MatTableDataSource} from '@angular/material/table';
 import {BalanceService} from '../../../../service/balance.service';
 import {DatePipe} from '@angular/common';
 

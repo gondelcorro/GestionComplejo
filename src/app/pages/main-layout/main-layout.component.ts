@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {CambioClaveComponent} from '../configuracion/cambio-clave/cambio-clave.component';
 
 @Component({
