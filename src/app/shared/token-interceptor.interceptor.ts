@@ -2,17 +2,7 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {throwError as observableThrowError, Observable} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
-import {
-  HttpInterceptor,
-  HttpRequest,
-  HttpHandler,
-  HttpSentEvent,
-  HttpHeaderResponse,
-  HttpProgressEvent,
-  HttpResponse,
-  HttpUserEvent,
-  HttpErrorResponse,
-} from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpSentEvent, HttpHeaderResponse, HttpProgressEvent, HttpResponse, HttpUserEvent, HttpErrorResponse } from '@angular/common/http';
 import {LoginService} from './login.service';
 import {LoaderService} from './loader.service';
 

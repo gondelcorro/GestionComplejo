@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import {TurnoFijo} from '../model/TurnoFijo';
 import {environment} from '../../environments/environment';
 import {Subject} from 'rxjs';
