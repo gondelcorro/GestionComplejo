@@ -7,7 +7,7 @@ import {AppComponent} from './app.component';
 import {MainLayoutComponent} from './pages/main-layout/main-layout.component';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {CanchaComponent} from './pages/cancha/cancha.component';
 import {EdicionComponent} from './pages/cancha/edicion/edicion.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -21,13 +21,12 @@ import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import {CommonModule, DatePipe, registerLocaleData} from '@angular/common';
 import localeEsAr from '@angular/common/locales/es-AR';
 import {DetalleReservaComponent} from './pages/pago/detalle-reserva/detalle-reserva.component';
-import {LottieModule} from 'ngx-lottie';
+import {LottieComponent, provideLottieOptions} from 'ngx-lottie';
 import {NotFoundComponent} from './error/not-found/not-found.component';
 import {ErrorServerComponent} from './error/error-server/error-server.component';
 
 registerLocaleData(localeEsAr, 'es-Ar');
 import {TokenInterceptor} from './shared/token-interceptor.interceptor';
-import player from 'lottie-web';
 import {DetalleComponent} from './pages/reserva/detalle/detalle.component';
 import {NuevaComponent} from './pages/reserva/nueva/nueva.component';
 import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
@@ -54,81 +53,83 @@ import {ReservasTurnoComponent} from './pages/turno-fijo/reservas-turno/reservas
 import {TurnoLibreComponent} from './pages/pago/turno-libre/turno-libre.component';
 import {PagoTurnoFijoComponent} from './pages/pago/turno-fijo/turno-fijo.component';
 import {TurnoFijoComponent} from './pages/turno-fijo/turno-fijo.component';
-import { AbonarFechaComponent } from './pages/turno-fijo/reservas-turno/abonar-fecha/abonar-fecha.component';
-import { CancelarFechaComponent } from './pages/turno-fijo/reservas-turno/cancelar-fecha/cancelar-fecha.component';
-import { FileInputComponent } from './file-input/file-input.component';
+import {AbonarFechaComponent} from './pages/turno-fijo/reservas-turno/abonar-fecha/abonar-fecha.component';
+import {CancelarFechaComponent} from './pages/turno-fijo/reservas-turno/cancelar-fecha/cancelar-fecha.component';
+import {FileInputComponent} from './file-input/file-input.component';
 import {AvatarModule} from 'ngx-avatars';
 
-// add this lines for lotties
-export function playerFactory() {
-  return player;
-}
 
-@NgModule({ declarations: [
-        AppComponent,
-        MainLayoutComponent,
-        DashboardComponent,
-        CanchaComponent,
-        EdicionComponent,
-        PagoComponent,
-        ReservaComponent,
-        SchedulerComponent,
-        DetalleReservaComponent,
-        NotFoundComponent,
-        ErrorServerComponent,
-        DetalleComponent,
-        NuevaComponent,
-        ProcesandoReservaComponent,
-        ConfiguracionComponent,
-        DiasAtencionComponent,
-        BalanceComponent,
-        ImagenComponent,
-        OpcionesComponent,
-        BalanceDiarioComponent,
-        BalanceSemanalComponent,
-        BalanceMensualComponent,
-        CambioClaveComponent,
-        AnulacionComponent,
-        DeshabilitarComponent,
-        ConfirmaCambiosComponent,
-        EditarComponent,
-        SchedulerEdicionComponent,
-        TurnoFijoComponent,
-        NuevoTurnoComponent,
-        ReservasTurnoComponent,
-        TurnoLibreComponent,
-        PagoTurnoFijoComponent,
-        AbonarFechaComponent,
-        CancelarFechaComponent,
-        FileInputComponent
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MaterialModule,
-        CommonModule,
-        AvatarModule, // npm i ngx-avatars
-        FormsModule, // NECESARIO IMPORTAR PARA USAR EL NgModule
-        ReactiveFormsModule,
-        CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }), // ng add angular-calendar
-        SchedulerModule.forRoot({ locale: 'es', headerDateFormat: 'daysRange' }), //npm install angular-calendar-scheduler date-fns --save and npm install moment
-        LottieModule.forRoot({ player: playerFactory }), // npm i lottie-web ngx-lottie
-        NgxMatTimepickerModule.setLocale('es-Ar'), //npm i --save ngx-mat-timepicker (USADO PARA EL RELOJ MODAL)
-        NgxMaterialTimepickerModule, //npm install --save ngx-material-timepicker (USADO PARA LA HORA TIPO INPUT)
-        MatDatepickerModule,
-        MatMomentDateModule //npm i @angular/material-moment-adapter
-    ], providers: [
-        {
-            provide: LOCALE_ID,
-            useValue: 'es-AR'
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: TokenInterceptor,
-            multi: true
-        },
-        DatePipe,
-        provideHttpClient(withInterceptorsFromDi())
-    ] })
+@NgModule({
+  declarations: [
+    AppComponent,
+    MainLayoutComponent,
+    DashboardComponent,
+    CanchaComponent,
+    EdicionComponent,
+    PagoComponent,
+    ReservaComponent,
+    SchedulerComponent,
+    DetalleReservaComponent,
+    NotFoundComponent,
+    ErrorServerComponent,
+    DetalleComponent,
+    NuevaComponent,
+    ProcesandoReservaComponent,
+    ConfiguracionComponent,
+    DiasAtencionComponent,
+    BalanceComponent,
+    ImagenComponent,
+    OpcionesComponent,
+    BalanceDiarioComponent,
+    BalanceSemanalComponent,
+    BalanceMensualComponent,
+    CambioClaveComponent,
+    AnulacionComponent,
+    DeshabilitarComponent,
+    ConfirmaCambiosComponent,
+    EditarComponent,
+    SchedulerEdicionComponent,
+    TurnoFijoComponent,
+    NuevoTurnoComponent,
+    ReservasTurnoComponent,
+    TurnoLibreComponent,
+    PagoTurnoFijoComponent,
+    AbonarFechaComponent,
+    CancelarFechaComponent,
+    FileInputComponent
+  ],
+  bootstrap: [AppComponent],
+  imports: [BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    CommonModule,
+    AvatarModule, // npm i ngx-avatars
+    FormsModule, // NECESARIO IMPORTAR PARA USAR EL NgModule
+    ReactiveFormsModule,
+    CalendarModule.forRoot({provide: DateAdapter, useFactory: adapterFactory}), // ng add angular-calendar
+    SchedulerModule.forRoot({locale: 'es', headerDateFormat: 'daysRange'}), //npm install angular-calendar-scheduler date-fns --save and npm install moment
+    NgxMatTimepickerModule.setLocale('es-Ar'), //npm i --save ngx-mat-timepicker (USADO PARA EL RELOJ MODAL)
+    NgxMaterialTimepickerModule, //npm install --save ngx-material-timepicker (USADO PARA LA HORA TIPO INPUT)
+    MatDatepickerModule,
+    MatMomentDateModule, //npm i @angular/material-moment-adapter
+    LottieComponent,
+  ], providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'es-AR'
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    DatePipe,
+    provideHttpClient(withInterceptorsFromDi()),
+    provideLottieOptions({
+      player: () => import('lottie-web')
+    })
+  ]
+})
 export class AppModule {
 }
