@@ -12,10 +12,6 @@ import {MatTableDataSource} from '@angular/material/table';
 import {BalanceService} from '../../../../service/balance.service';
 import {DatePipe} from '@angular/common';
 
-import * as _moment from 'moment';
-
-const moment = _moment;
-
 export const MY_FORMATS = {
   parse: {
     dateInput: 'MM/YYYY',
@@ -53,7 +49,7 @@ export class BalanceMensualComponent implements OnInit {
     {idCol: 'saldo', titleCol: 'Saldo'}
   ];
   columnsToDisplayMap: any[] = this.columnsToDisplay.map(col => col.idCol);
-  date = new UntypedFormControl(moment());
+  date = new UntypedFormControl(new Date());
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private balanceService: BalanceService, private complejoService: ComplejoService, private complejoSharedService: ComplejoSharedService,
