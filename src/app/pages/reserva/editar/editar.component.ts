@@ -9,9 +9,10 @@ import {ReservaService} from '../../../service/reserva.service';
 import {CanchaService} from '../../../service/cancha.service';
 
 @Component({
-  selector: 'app-edicion',
-  templateUrl: './editar.component.html',
-  styleUrls: ['./editar.component.css']
+    selector: 'app-edicion',
+    templateUrl: './editar.component.html',
+    styleUrls: ['./editar.component.css'],
+    standalone: false
 })
 export class EditarComponent implements OnInit {
 

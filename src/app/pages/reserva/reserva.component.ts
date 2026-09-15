@@ -10,9 +10,10 @@ import {environment} from '../../../environments/environment';
 import {ComplejoService} from '../../service/complejo.service';
 
 @Component({
-  selector: 'app-reserva',
-  templateUrl: './reserva.component.html',
-  styleUrls: ['./reserva.component.css']
+    selector: 'app-reserva',
+    templateUrl: './reserva.component.html',
+    styleUrls: ['./reserva.component.css'],
+    standalone: false
 })
 export class ReservaComponent implements OnInit {
 

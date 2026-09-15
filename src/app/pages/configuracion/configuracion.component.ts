@@ -15,9 +15,10 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import {ConfirmaCambiosComponent} from './confirma-cambios/confirma-cambios.component';
 
 @Component({
-  selector: 'app-configuracion',
-  templateUrl: './configuracion.component.html',
-  styleUrls: ['./configuracion.component.css']
+    selector: 'app-configuracion',
+    templateUrl: './configuracion.component.html',
+    styleUrls: ['./configuracion.component.css'],
+    standalone: false
 })
 export class ConfiguracionComponent implements OnInit {
 

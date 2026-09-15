@@ -6,9 +6,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-cambio-clave',
-  templateUrl: './cambio-clave.component.html',
-  styleUrls: ['./cambio-clave.component.css']
+    selector: 'app-cambio-clave',
+    templateUrl: './cambio-clave.component.html',
+    styleUrls: ['./cambio-clave.component.css'],
+    standalone: false
 })
 export class CambioClaveComponent implements OnInit {
 

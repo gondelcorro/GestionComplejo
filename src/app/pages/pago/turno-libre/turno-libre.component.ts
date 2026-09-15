@@ -11,9 +11,10 @@ import {environment} from '../../../../environments/environment';
 import {Pago} from '../../../model/pago';
 
 @Component({
-  selector: 'app-turno-libre',
-  templateUrl: './turno-libre.component.html',
-  styleUrls: ['./turno-libre.component.css']
+    selector: 'app-turno-libre',
+    templateUrl: './turno-libre.component.html',
+    styleUrls: ['./turno-libre.component.css'],
+    standalone: false
 })
 export class TurnoLibreComponent implements OnInit, AfterViewInit {
 

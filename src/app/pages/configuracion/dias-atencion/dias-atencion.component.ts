@@ -4,9 +4,10 @@ import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from '@angular/material/bottom
 import {DiasAtencion} from '../../../model/diasAtencion';
 
 @Component({
-  selector: 'app-dias-atencion',
-  templateUrl: './dias-atencion.component.html',
-  styleUrls: ['./dias-atencion.component.css']
+    selector: 'app-dias-atencion',
+    templateUrl: './dias-atencion.component.html',
+    styleUrls: ['./dias-atencion.component.css'],
+    standalone: false
 })
 
 export class DiasAtencionComponent implements OnInit {

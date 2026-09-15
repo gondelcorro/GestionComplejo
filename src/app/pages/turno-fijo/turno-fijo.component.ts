@@ -13,9 +13,10 @@ import {EstadoReserva} from '../../model/estadoReserva';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-turno-fijo',
-  templateUrl: './turno-fijo.component.html',
-  styleUrls: ['./turno-fijo.component.css']
+    selector: 'app-turno-fijo',
+    templateUrl: './turno-fijo.component.html',
+    styleUrls: ['./turno-fijo.component.css'],
+    standalone: false
 })
 export class TurnoFijoComponent implements OnInit, AfterViewInit {
 

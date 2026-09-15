@@ -14,9 +14,10 @@ import {ProcesandoReservaComponent} from '../procesando-reserva/procesando-reser
 import {environment} from '../../../../environments/environment';
 
 @Component({
-  selector: 'app-nueva',
-  templateUrl: './nueva.component.html',
-  styleUrls: ['./nueva.component.css']
+    selector: 'app-nueva',
+    templateUrl: './nueva.component.html',
+    styleUrls: ['./nueva.component.css'],
+    standalone: false
 })
 export class NuevaComponent implements OnInit {
 

@@ -29,12 +29,13 @@ export const MY_FORMATS = {
 };
 
 @Component({
-  selector: 'app-balance-mensual',
-  templateUrl: './balance-mensual.component.html',
-  styleUrls: ['./balance-mensual.component.css'],
-  providers: [
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-  ]
+    selector: 'app-balance-mensual',
+    templateUrl: './balance-mensual.component.html',
+    styleUrls: ['./balance-mensual.component.css'],
+    providers: [
+        { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+    ],
+    standalone: false
 })
 export class BalanceMensualComponent implements OnInit {
 

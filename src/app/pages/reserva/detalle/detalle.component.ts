@@ -12,9 +12,10 @@ import {EditarComponent} from '../editar/editar.component';
 import {TurnoFijoService} from '../../../service/turno-fijo.service';
 
 @Component({
-  selector: 'app-detalle',
-  templateUrl: './detalle.component.html',
-  styleUrls: ['./detalle.component.css']
+    selector: 'app-detalle',
+    templateUrl: './detalle.component.html',
+    styleUrls: ['./detalle.component.css'],
+    standalone: false
 })
 export class DetalleComponent implements OnInit {
 

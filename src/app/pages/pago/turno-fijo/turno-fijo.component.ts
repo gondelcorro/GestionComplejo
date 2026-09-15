@@ -11,9 +11,10 @@ import {environment} from '../../../../environments/environment';
 import {Pago} from '../../../model/pago';
 
 @Component({
-  selector: 'pago-turno-fijo',
-  templateUrl: './turno-fijo.component.html',
-  styleUrls: ['./turno-fijo.component.css']
+    selector: 'pago-turno-fijo',
+    templateUrl: './turno-fijo.component.html',
+    styleUrls: ['./turno-fijo.component.css'],
+    standalone: false
 })
 export class PagoTurnoFijoComponent implements OnInit, AfterViewInit {
 

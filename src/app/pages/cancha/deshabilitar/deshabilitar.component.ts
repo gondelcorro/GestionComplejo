@@ -8,9 +8,10 @@ import {Cancha} from '../../../model/cancha';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-deshabilitar',
-  templateUrl: './deshabilitar.component.html',
-  styleUrls: ['./deshabilitar.component.css']
+    selector: 'app-deshabilitar',
+    templateUrl: './deshabilitar.component.html',
+    styleUrls: ['./deshabilitar.component.css'],
+    standalone: false
 })
 export class DeshabilitarComponent implements OnInit {
 

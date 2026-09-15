@@ -39,13 +39,14 @@ export class FiveDayRangeSelectionStrategy<D> implements MatDateRangeSelectionSt
 }
 
 @Component({
-  selector: 'app-balance-semanal',
-  templateUrl: './balance-semanal.component.html',
-  styleUrls: ['./balance-semanal.component.css'],
-  providers: [{
-    provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
-    useClass: FiveDayRangeSelectionStrategy
-  }]
+    selector: 'app-balance-semanal',
+    templateUrl: './balance-semanal.component.html',
+    styleUrls: ['./balance-semanal.component.css'],
+    providers: [{
+            provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
+            useClass: FiveDayRangeSelectionStrategy
+        }],
+    standalone: false
 })
 export class BalanceSemanalComponent implements OnInit {
 

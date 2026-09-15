@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-balance',
-  templateUrl: './balance.component.html',
-  styleUrls: ['./balance.component.css']
+    selector: 'app-balance',
+    templateUrl: './balance.component.html',
+    styleUrls: ['./balance.component.css'],
+    standalone: false
 })
 export class BalanceComponent implements OnInit {
 

@@ -30,13 +30,14 @@ import {DatePipe} from '@angular/common';
 import {SchedulerService} from '../../../service/scheduler.service';
 
 @Component({
-  selector: 'app-scheduler',
-  templateUrl: './scheduler.component.html',
-  styleUrls: ['./scheduler.component.css'],
-  providers: [{
-    provide: CalendarDateFormatter,
-    useClass: SchedulerDateFormatter
-  }]
+    selector: 'app-scheduler',
+    templateUrl: './scheduler.component.html',
+    styleUrls: ['./scheduler.component.css'],
+    providers: [{
+            provide: CalendarDateFormatter,
+            useClass: SchedulerDateFormatter
+        }],
+    standalone: false
 })
 export class SchedulerComponent implements OnInit {
 

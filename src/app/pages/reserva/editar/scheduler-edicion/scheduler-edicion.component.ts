@@ -18,13 +18,14 @@ import {DatePipe} from '@angular/common';
 import {NuevaComponent} from '../../nueva/nueva.component';
 
 @Component({
-  selector: 'app-scheduler-edicion',
-  templateUrl: './scheduler-edicion.component.html',
-  styleUrls: ['./scheduler-edicion.component.css'],
-  providers: [{
-    provide: CalendarDateFormatter,
-    useClass: SchedulerDateFormatter
-  }]
+    selector: 'app-scheduler-edicion',
+    templateUrl: './scheduler-edicion.component.html',
+    styleUrls: ['./scheduler-edicion.component.css'],
+    providers: [{
+            provide: CalendarDateFormatter,
+            useClass: SchedulerDateFormatter
+        }],
+    standalone: false
 })
 export class SchedulerEdicionComponent implements OnInit {
 

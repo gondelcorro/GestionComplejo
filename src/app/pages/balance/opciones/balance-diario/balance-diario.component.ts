@@ -11,9 +11,10 @@ import {DatePipe} from '@angular/common';
 import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
-  selector: 'app-balance-diario',
-  templateUrl: './balance-diario.component.html',
-  styleUrls: ['./balance-diario.component.css']
+    selector: 'app-balance-diario',
+    templateUrl: './balance-diario.component.html',
+    styleUrls: ['./balance-diario.component.css'],
+    standalone: false
 })
 export class BalanceDiarioComponent implements OnInit {
 

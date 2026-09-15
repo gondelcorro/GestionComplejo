@@ -4,9 +4,10 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {ComplejoService} from '../../../service/complejo.service';
 
 @Component({
-  selector: 'app-imagen',
-  templateUrl: './imagen.component.html',
-  styleUrls: ['./imagen.component.css']
+    selector: 'app-imagen',
+    templateUrl: './imagen.component.html',
+    styleUrls: ['./imagen.component.css'],
+    standalone: false
 })
 export class ImagenComponent implements OnInit {
 

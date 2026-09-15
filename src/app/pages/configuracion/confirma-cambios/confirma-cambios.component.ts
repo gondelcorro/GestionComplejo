@@ -5,9 +5,10 @@ import {DatePipe} from '@angular/common';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-confirma-cambios',
-  templateUrl: './confirma-cambios.component.html',
-  styleUrls: ['./confirma-cambios.component.css']
+    selector: 'app-confirma-cambios',
+    templateUrl: './confirma-cambios.component.html',
+    styleUrls: ['./confirma-cambios.component.css'],
+    standalone: false
 })
 export class ConfirmaCambiosComponent implements OnInit {
 

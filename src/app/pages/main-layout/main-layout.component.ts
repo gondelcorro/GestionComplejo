@@ -10,9 +10,10 @@ import {MatDialog} from '@angular/material/dialog';
 import {CambioClaveComponent} from '../configuracion/cambio-clave/cambio-clave.component';
 
 @Component({
-  selector: 'app-main-layout',
-  templateUrl: './main-layout.component.html',
-  styleUrls: ['./main-layout.component.css']
+    selector: 'app-main-layout',
+    templateUrl: './main-layout.component.html',
+    styleUrls: ['./main-layout.component.css'],
+    standalone: false
 })
 export class MainLayoutComponent implements OnInit {
 

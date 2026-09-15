@@ -5,9 +5,10 @@ import {TurnoFijoService} from '../../../../service/turno-fijo.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-abonar-fecha',
-  templateUrl: './abonar-fecha.component.html',
-  styleUrls: ['./abonar-fecha.component.css']
+    selector: 'app-abonar-fecha',
+    templateUrl: './abonar-fecha.component.html',
+    styleUrls: ['./abonar-fecha.component.css'],
+    standalone: false
 })
 export class AbonarFechaComponent implements OnInit {
 

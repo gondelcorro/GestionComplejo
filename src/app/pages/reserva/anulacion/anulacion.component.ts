@@ -6,9 +6,10 @@ import {ReservaService} from '../../../service/reserva.service';
 import {DatePipe} from '@angular/common';
 
 @Component({
-  selector: 'app-anulacion',
-  templateUrl: './anulacion.component.html',
-  styleUrls: ['./anulacion.component.css']
+    selector: 'app-anulacion',
+    templateUrl: './anulacion.component.html',
+    styleUrls: ['./anulacion.component.css'],
+    standalone: false
 })
 export class AnulacionComponent implements OnInit {
 

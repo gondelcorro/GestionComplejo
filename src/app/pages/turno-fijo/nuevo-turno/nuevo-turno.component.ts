@@ -16,9 +16,10 @@ import {TurnoFijo} from '../../../model/TurnoFijo';
 import {TurnoFijoService} from '../../../service/turno-fijo.service';
 
 @Component({
-  selector: 'app-nuevo-turno',
-  templateUrl: './nuevo-turno.component.html',
-  styleUrls: ['./nuevo-turno.component.css']
+    selector: 'app-nuevo-turno',
+    templateUrl: './nuevo-turno.component.html',
+    styleUrls: ['./nuevo-turno.component.css'],
+    standalone: false
 })
 export class NuevoTurnoComponent implements OnInit {
 

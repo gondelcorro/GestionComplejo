@@ -4,9 +4,10 @@ import {TurnoFijoService} from '../../../../service/turno-fijo.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-cancelar-fecha',
-  templateUrl: './cancelar-fecha.component.html',
-  styleUrls: ['./cancelar-fecha.component.css']
+    selector: 'app-cancelar-fecha',
+    templateUrl: './cancelar-fecha.component.html',
+    styleUrls: ['./cancelar-fecha.component.css'],
+    standalone: false
 })
 export class CancelarFechaComponent implements OnInit {
 

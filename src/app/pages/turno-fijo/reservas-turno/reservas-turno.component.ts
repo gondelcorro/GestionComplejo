@@ -11,9 +11,10 @@ import {ReservaService} from '../../../service/reserva.service';
 import {CancelarFechaComponent} from './cancelar-fecha/cancelar-fecha.component';
 
 @Component({
-  selector: 'reservas-turno',
-  templateUrl: './reservas-turno.component.html',
-  styleUrls: ['./reservas-turno.component.css']
+    selector: 'reservas-turno',
+    templateUrl: './reservas-turno.component.html',
+    styleUrls: ['./reservas-turno.component.css'],
+    standalone: false
 })
 export class ReservasTurnoComponent implements OnInit {
 

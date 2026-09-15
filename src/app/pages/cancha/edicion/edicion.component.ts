@@ -7,9 +7,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CanchaService } from 'src/app/service/cancha.service';
 
 @Component({
-  selector: 'app-edicion',
-  templateUrl: './edicion.component.html',
-  styleUrls: ['./edicion.component.css']
+    selector: 'app-edicion',
+    templateUrl: './edicion.component.html',
+    styleUrls: ['./edicion.component.css'],
+    standalone: false
 })
 export class EdicionComponent implements OnInit {
 

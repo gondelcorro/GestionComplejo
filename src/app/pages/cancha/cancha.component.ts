@@ -11,9 +11,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {DeshabilitarComponent} from './deshabilitar/deshabilitar.component';
 
 @Component({
-  selector: 'app-cancha',
-  templateUrl: './cancha.component.html',
-  styleUrls: ['./cancha.component.css']
+    selector: 'app-cancha',
+    templateUrl: './cancha.component.html',
+    styleUrls: ['./cancha.component.css'],
+    standalone: false
 })
 export class CanchaComponent implements OnInit {
 

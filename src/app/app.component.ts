@@ -8,9 +8,10 @@ import {ComplejoService} from './service/complejo.service';
 import {ComplejoSharedService} from './service/complejo-shared.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    standalone: false
 })
 export class AppComponent implements OnInit {
 

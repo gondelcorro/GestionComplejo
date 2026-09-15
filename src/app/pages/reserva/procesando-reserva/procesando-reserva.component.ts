@@ -6,9 +6,10 @@ import {Reserva} from '../../../model/reserva';
 import {DatePipe} from '@angular/common';
 
 @Component({
-  selector: 'app-procesando-reserva',
-  templateUrl: './procesando-reserva.component.html',
-  styleUrls: ['./procesando-reserva.component.css']
+    selector: 'app-procesando-reserva',
+    templateUrl: './procesando-reserva.component.html',
+    styleUrls: ['./procesando-reserva.component.css'],
+    standalone: false
 })
 export class ProcesandoReservaComponent implements OnInit {
 
